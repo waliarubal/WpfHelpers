@@ -3,16 +3,16 @@
   <metadata>
     <!-- required -->
     <id>NullVoidCreations.WpfHelpers</id>
-    <version>1.0.0.0</version>
-    <description>A set of classes and resources to get up to speed with a new WPF project targeting .NET Framework 3.5 and 4.0.</description>
+    <version>1.0.1</version>
+    <description>A set of classes and resources to get up to speed with a new WPF MVVM based project targeting .NET Framework 4.0.</description>
     <authors>Rubal Walia</authors>
     <!-- optional -->
     <title>WPF Helpers</title>
     <owners>Rubal Walia</owners>
     <projectUrl>https://github.com/waliarubal/WpfHelpers</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <releaseNotes>This is the initial release.</releaseNotes>
+    <releaseNotes></releaseNotes>
     <copyright>Copyright © Rubal Walia 2017</copyright>
-    <tags>WPF XAML</tags>
+    <tags>WPF XAML MVVM</tags>
   </metadata>
 </package>

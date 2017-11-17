@@ -6,7 +6,7 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("WPF Helpers")]
-[assembly: AssemblyDescription("A set of classes and resources to get up to speed with a new WPF project targeting .NET Framework 3.5 and 4.0.")]
+[assembly: AssemblyDescription("A set of classes and resources to get up to speed with a new WPF MVVM based project targeting .NET Framework 4.0.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NullVoid Creations")]
 [assembly: AssemblyProduct("WPF Helpers")]
