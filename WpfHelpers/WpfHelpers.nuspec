@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>NullVoidCreations.WpfHelpers</id>
+    <version>1.0.0.0</version>
+    <title>WPH Helpers</title>
+    <authors>Rubal Walia</authors>
+    <owners>Rubal Walia</owners>
+    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
+    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
+    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>This is the initial release.</releaseNotes>
+    <copyright>Copyright Rubal Walia 2017</copyright>
+    <tags>WPF XAML</tags>
+  </metadata>
+</package>
