@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
+    <!-- required -->
     <id>NullVoidCreations.WpfHelpers</id>
     <version>1.0.0.0</version>
-    <title>WPH Helpers</title>
+    <description>A set of classes and resources to get up to speed with a new WPF project targeting .NET Framework 3.5 and 4.0.</description>
     <authors>Rubal Walia</authors>
+    <!-- optional -->
+    <title>WPF Helpers</title>
     <owners>Rubal Walia</owners>
-    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
-    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
-    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
+    <projectUrl>https://github.com/waliarubal/WpfHelpers</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
     <releaseNotes>This is the initial release.</releaseNotes>
-    <copyright>Copyright Rubal Walia 2017</copyright>
+    <copyright>Copyright © Rubal Walia 2017</copyright>
     <tags>WPF XAML</tags>
   </metadata>
 </package>

@@ -65,6 +65,9 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>WpfHelpers.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -123,6 +126,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Release (
+    nuget setApiKey 4db14c2e-b21b-4200-ad02-2d60e718ee6b
+    nuget pack "$(ProjectPath)"
+    nuget push "$(ProjectDir)NullVoidCreations.WpfHelpers.1.0.0.nupkg" -Source https://www.nuget.org/api/v2/package
+)</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
