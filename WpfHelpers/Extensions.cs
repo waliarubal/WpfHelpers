@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 
-namespace NullVoidCreations.WpfHelpers
+namespace NullVoidCreations.WpfHelpers.WpfHelpers
 {
     public static class Extensions
     {

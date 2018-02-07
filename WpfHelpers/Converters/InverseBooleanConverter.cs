@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace EbayWorker.Converters
+namespace NullVoidCreations.WpfHelpers.Converters
 {
     public class InverseBooleanConverter : IValueConverter
     {

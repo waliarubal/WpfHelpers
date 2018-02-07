@@ -2,7 +2,7 @@
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 
-namespace EbayWorker.Helpers
+namespace NullVoidCreations.WpfHelpers.Helpers
 {
     public class ExtendedWebClient : WebClient
     {

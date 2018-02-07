@@ -1,9 +1,9 @@
-﻿using NullVoidCreations.WpfHelpers;
+﻿using NullVoidCreations.WpfHelpers.WpfHelpers;
 using System;
 using System.Globalization;
 using System.Windows.Data;
 
-namespace EbayWorker.Converters
+namespace NullVoidCreations.WpfHelpers.Converters
 {
     public class EnumToStringConverter : IValueConverter
     {
