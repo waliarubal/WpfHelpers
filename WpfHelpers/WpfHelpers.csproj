@@ -63,7 +63,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>WpfHelpers.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>WpfHelpers.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
@@ -106,7 +106,7 @@
     </Compile>
     <AppDesigner Include="Properties\" />
     <None Include="WpfHelpers.nuspec" />
-    <None Include="WpfHelpers.snk" />
+    <None Include="WpfHelpers.pfx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
