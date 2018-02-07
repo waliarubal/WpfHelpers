@@ -105,7 +105,9 @@
       <SubType>Code</SubType>
     </Compile>
     <AppDesigner Include="Properties\" />
-    <None Include="WpfHelpers.nuspec" />
+    <None Include="WpfHelpers.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="WpfHelpers.snk" />
   </ItemGroup>
   <ItemGroup>
@@ -128,9 +130,9 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release (
-    nuget setApiKey 4db14c2e-b21b-4200-ad02-2d60e718ee6b
-    nuget pack "$(ProjectPath)"
-    nuget push "NullVoidCreations.WpfHelpers.1.0.2.nupkg" -Source https://www.nuget.org/api/v2/package
+    nuget setApiKey oy2nyz5mbnmrlp2q7woabfjnd7bz5bjerkpz3vb3ocxfti -source https://api.nuget.org/v3/index.json
+    nuget pack "$(ProjectPath)" -properties Configuration=Release
+    nuget push "NullVoidCreations.WpfHelpers.1.0.2.nupkg" -Source https://api.nuget.org/v3/index.json
 )</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
