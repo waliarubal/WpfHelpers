@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 
-namespace NullVoidCreations.WpfHelpers.WpfHelpers
+namespace NullVoidCreations.WpfHelpers
 {
     public static class Extensions
     {
@@ -54,6 +54,18 @@ namespace NullVoidCreations.WpfHelpers.WpfHelpers
                 return DateTime.Now;
             }
 
+        }
+
+        public static string Encrypt(this string plainText, string password)
+        {
+            var stringCipher = new StringCipher();
+            return stringCipher.Encrypt(plainText, password);
+        }
+
+        public static string Decrypt(this string cipherText, string password)
+        {
+            var stringCipher = new StringCipher();
+            return stringCipher.Decrypt(cipherText, password);
         }
     }
 }

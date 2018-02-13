@@ -87,6 +87,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblyInformation.cs" />
     <Compile Include="Converters\EnumToStringConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Base\ViewModelBase.cs" />
@@ -94,6 +95,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Extensions.cs" />
+    <Compile Include="SettingsManager.cs" />
+    <Compile Include="StringCipher.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\CommandBase.cs" />
@@ -132,7 +135,7 @@
     <PostBuildEvent>if $(ConfigurationName) == Release (
     nuget setApiKey oy2nyz5mbnmrlp2q7woabfjnd7bz5bjerkpz3vb3ocxfti -source https://api.nuget.org/v3/index.json
     nuget pack "$(ProjectPath)" -properties Configuration=Release
-    nuget push "NullVoidCreations.WpfHelpers.1.0.2.nupkg" -Source https://api.nuget.org/v3/index.json
+    nuget push "NullVoidCreations.WpfHelpers.1.0.3.nupkg" -Source https://api.nuget.org/v3/index.json
 )</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
