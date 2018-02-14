@@ -91,12 +91,16 @@
     <Compile Include="Converters\EnumToStringConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Base\ViewModelBase.cs" />
+    <Compile Include="DirectoryWalker.cs" />
     <Compile Include="ExtendedWebClient.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Extensions.cs" />
+    <Compile Include="FileSystemHelper.cs" />
     <Compile Include="SettingsManager.cs" />
     <Compile Include="StringCipher.cs" />
+    <Compile Include="PlatformInvoke.cs" />
+    <Compile Include="ZipStorer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\CommandBase.cs" />

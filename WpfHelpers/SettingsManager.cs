@@ -88,6 +88,13 @@ namespace NullVoidCreations.WpfHelpers
                 xmlWriter.Flush();
 
                 var encryptedSettings = stringWriter.GetStringBuilder().ToString().Encrypt(password);
+                
+                var fileInfo = new FileInfo(fileName);
+                if (fileInfo.Exists)
+                    fileInfo.Delete();
+                else if (!fileInfo.Directory.Exists)
+                    Directory.CreateDirectory(fileInfo.DirectoryName);
+
                 File.WriteAllText(fileName, encryptedSettings);
             }
         }

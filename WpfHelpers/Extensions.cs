@@ -1,8 +1,10 @@
-﻿using System;
+﻿using NullVoidCreations.Janitor.Shared.Helpers;
+using System;
 using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Reflection;
+using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -22,6 +24,50 @@ namespace NullVoidCreations.WpfHelpers
                 @"(\p{Ll})(\P{Ll})",
                 "$1 $2"
             );
+        }
+
+        public static string GetSHA512(this FileInfo fileInfo)
+        {
+            if (fileInfo.Exists)
+            {
+                var fileSystemHelper = new FileSystemHelper();
+                return fileSystemHelper.GetSHA512(fileInfo.FullName);
+            }
+
+            return default(string);
+        }
+
+        public static string GetMD5(this FileInfo fileInfo)
+        {
+            if (fileInfo.Exists)
+            {
+                var fileSystemHelper = new FileSystemHelper();
+                return fileSystemHelper.GetMD5(fileInfo.FullName);
+            }
+
+            return default(string);
+        }
+
+        public static bool Run(this FileInfo fileInfo, string arguments, bool runAsAdministrator, bool hideUi = false)
+        {
+            if (fileInfo.Exists)
+            {
+                var fileSystemHelper = new FileSystemHelper();
+                return fileSystemHelper.RunProgram(fileInfo.FullName, arguments, runAsAdministrator, hideUi);
+            }
+
+            return false;
+        }
+
+        public static bool Run(this FileInfo fileInfo, string arguments, string userName, string password)
+        {
+            if (fileInfo.Exists)
+            {
+                var pInvoke = new PlatformInvoke();
+                return pInvoke.RunProgram(fileInfo.FullName, arguments, userName, password);
+            }
+
+            return false;
         }
 
         public static string GetStartupDirectory(this Application application)
@@ -66,6 +112,23 @@ namespace NullVoidCreations.WpfHelpers
         {
             var stringCipher = new StringCipher();
             return stringCipher.Decrypt(cipherText, password);
+        }
+
+        public static StringBuilder AppendLine(this StringBuilder builder, string format, params object[] parts)
+        {
+            return builder.AppendLine(string.Format(format, parts));
+        }
+
+        public static SecureString ToSecureString(this string stringToConvert)
+        {
+            var secureString = new SecureString();
+            if (string.IsNullOrEmpty(stringToConvert))
+                return secureString;
+
+            foreach (char c in stringToConvert)
+                secureString.AppendChar(c);
+
+            return secureString;
         }
     }
 }
