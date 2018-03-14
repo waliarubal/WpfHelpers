@@ -24,24 +24,36 @@ namespace NullVoidCreations.WpfHelpers.Commands
 
             if (IsSynchronous)
             {
-                _action.Invoke();
-
-                IsExecuting = false;
-                return;
+                try
+                {
+                    _action.Invoke();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    IsExecuting = false;
+                }
             }
-
-            if (_worker == null)
+            else
             {
-                _worker = new BackgroundWorker();
-                _worker.DoWork += Worker_DoWork;
-                _worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+                if (_worker == null)
+                {
+                    _worker = new BackgroundWorker();
+                    _worker.DoWork += Worker_DoWork;
+                    _worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+                }
+                _worker.RunWorkerAsync(_action);
             }
-            _worker.RunWorkerAsync(_action);
         }
 
         private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             IsExecuting = false;
+            if (e.Error != null)
+                throw e.Error;
         }
 
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
