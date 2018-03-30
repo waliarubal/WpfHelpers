@@ -8,6 +8,8 @@ using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace NullVoidCreations.WpfHelpers
 {
@@ -129,6 +131,27 @@ namespace NullVoidCreations.WpfHelpers
                 secureString.AppendChar(c);
 
             return secureString;
+        }
+
+        public static void SaveScreenshot(this Window window, int dpi, string filename)
+        {
+
+            var targetBitmap = new RenderTargetBitmap(
+                (int)window.Width, //width
+                (int)window.Height, //height
+                dpi, //dpi x
+                dpi, //dpi y
+                PixelFormats.Pbgra32 // pixel format
+                );
+            targetBitmap.Render(window);
+
+            var encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(targetBitmap));
+
+            using (var stream = File.Create(filename))
+            {
+                encoder.Save(stream);
+            }
         }
     }
 }
