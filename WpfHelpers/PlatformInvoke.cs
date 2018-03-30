@@ -362,6 +362,19 @@ namespace NullVoidCreations.WpfHelpers
             return GetSpecialDirectory(CSIDL.CSIDL_PROGRAMS);
         }
 
+        public string SelectFolder(string description = "", Environment.SpecialFolder rootFolder = Environment.SpecialFolder.MyComputer)
+        {
+            using (var folderBrowser = new System.Windows.Forms.FolderBrowserDialog())
+            {
+                folderBrowser.Description = description;
+                folderBrowser.RootFolder = rootFolder;
+                if (folderBrowser.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    return folderBrowser.SelectedPath;
+            }
+
+            return null;
+        }
+
         public void CreateShortcut(string lnkPath, string executable, string arguments, string workingDirectory, string iconPath, bool isMinimized)
         {
             // delete existing link
