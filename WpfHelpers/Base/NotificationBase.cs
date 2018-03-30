@@ -6,19 +6,20 @@ namespace NullVoidCreations.WpfHelpers.Base
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void Set<T>(string propertyName, ref T backingField, T value, bool raiseNotification = true)
+        protected bool Set<T>(string propertyName, ref T backingField, T value, bool raiseNotification = true)
         {
             if (string.IsNullOrEmpty(propertyName))
-                return;
+                return false;
 
             if (value == null && backingField == null)
-                return;
+                return false;
             else if (value != null && value.Equals(backingField))
-                return;
+                return false;
 
             backingField = value;
             if (raiseNotification)
                 RaisePropertyChanged(propertyName);
+            return true;
         }
 
         protected void RaisePropertyChanged(string propertyName)

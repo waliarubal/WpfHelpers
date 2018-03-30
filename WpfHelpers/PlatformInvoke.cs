@@ -8,7 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 
-namespace NullVoidCreations.Janitor.Shared.Helpers
+namespace NullVoidCreations.WpfHelpers
 {
 
     public class PlatformInvoke
