@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NullVoid Creations")]
 [assembly: AssemblyProduct("WPF Helpers")]
-[assembly: AssemblyCopyright("Copyright © Rubal Walia 2017")]
+[assembly: AssemblyCopyright("Copyright © Rubal Walia 2017 - 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
