@@ -14,6 +14,9 @@ namespace NullVoidCreations.WpfHelpers.DataStructures
         public Triplet(F first, S second, T third, bool raiseNotification) : this()
         {
             RaiseNotifiation = raiseNotification;
+            First = first;
+            Second = second;
+            Third = third;
         }
 
         public Triplet(F first, S second, T third) : this(first, second, third, true)

@@ -12,6 +12,8 @@ namespace NullVoidCreations.WpfHelpers.DataStructures
         public Doublet(F first, S second, bool raiseNotification): this()
         {
             RaiseNotifiation = raiseNotification;
+            First = first;
+            Second = second;
         }
 
         public Doublet(F first, S second): this(first, second, true)
