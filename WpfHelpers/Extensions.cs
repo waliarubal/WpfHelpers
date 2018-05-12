@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -122,14 +123,35 @@ namespace NullVoidCreations.WpfHelpers
 
         public static SecureString ToSecureString(this string stringToConvert)
         {
-            var secureString = new SecureString();
-            if (string.IsNullOrEmpty(stringToConvert))
-                return secureString;
+            if (stringToConvert == null)
+                throw new ArgumentNullException("stringToConvert");
 
-            foreach (char c in stringToConvert)
-                secureString.AppendChar(c);
+            unsafe
+            {
+                fixed (char* passwordChars = stringToConvert)
+                {
+                    var securePassword = new SecureString(passwordChars, stringToConvert.Length);
+                    securePassword.MakeReadOnly();
+                    return securePassword;
+                }
+            }
+        }
 
-            return secureString;
+        public static string ToUnsecureString(this SecureString stringToConvert)
+        {
+            if (stringToConvert == null)
+                throw new ArgumentNullException("stringToConvert");
+
+            IntPtr unmanagedString = IntPtr.Zero;
+            try
+            {
+                unmanagedString = Marshal.SecureStringToGlobalAllocUnicode(stringToConvert);
+                return Marshal.PtrToStringUni(unmanagedString);
+            }
+            finally
+            {
+                Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
+            }
         }
 
         public static void SaveScreenshot(this Window window, int dpi, string filename)
