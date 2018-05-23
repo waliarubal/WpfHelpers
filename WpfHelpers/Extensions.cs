@@ -8,6 +8,7 @@ using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -15,6 +16,12 @@ namespace NullVoidCreations.WpfHelpers
 {
     public static class Extensions
     {
+        public static IntPtr GetHandle(this Window window)
+        {
+            var windowHwnd = new WindowInteropHelper(window);
+            return windowHwnd.Handle;
+        }
+
         public static string SplitCamelCase(this string stringToSplit)
         {
             return Regex.Replace(
