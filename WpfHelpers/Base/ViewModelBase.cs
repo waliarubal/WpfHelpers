@@ -36,12 +36,13 @@ namespace NullVoidCreations.WpfHelpers.Base
                 throw new ArgumentNullException("view");
 
             _isDialog = !_isDialog;
+
             _container = new Window();
             if (owner != null)
             {
                 _container.ShowInTaskbar = false;
-                _container.Owner = owner;
                 _container.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                _container.Owner = owner;
             }
             else
                 _container.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -61,6 +62,7 @@ namespace NullVoidCreations.WpfHelpers.Base
             _result = result;
             _container.Close();
             _container = null;
+
             _isDialog = !_isDialog;
         }
     }
