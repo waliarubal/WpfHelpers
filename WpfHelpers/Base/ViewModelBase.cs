@@ -30,9 +30,10 @@ namespace NullVoidCreations.WpfHelpers.Base
             return null;
         }
 
-        public TResult ShowDialog<TResult>(Window owner = null)
+        public TResult ShowDialog<TResult>(Control view, Window owner = null)
         {
-            var view = GetView();
+            if (view == null)
+                throw new ArgumentNullException("view");
 
             _isDialog = !_isDialog;
             _container = new Window();
@@ -42,7 +43,9 @@ namespace NullVoidCreations.WpfHelpers.Base
                 _container.Owner = owner;
                 _container.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             }
-            _container.SizeToContent = SizeToContent.Height;
+            else
+                _container.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            _container.SizeToContent = SizeToContent.WidthAndHeight;
             _container.WindowStyle = WindowStyle.ToolWindow;
             _container.Content = view;
             _container.ShowDialog();
