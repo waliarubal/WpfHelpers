@@ -55,7 +55,7 @@ namespace NullVoidCreations.WpfHelpers.Base
 
         protected void Close<TResult>(TResult result)
         {
-            if (_isDialog)
+            if (!_isDialog)
                 throw new InvalidOperationException("Operation is only allowed when open using ShowDialog.");
 
             _result = result;
