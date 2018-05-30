@@ -47,7 +47,8 @@ namespace NullVoidCreations.WpfHelpers.Base
             else
                 _container.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             _container.SizeToContent = SizeToContent.WidthAndHeight;
-            _container.WindowStyle = WindowStyle.ToolWindow;
+            _container.WindowStyle = WindowStyle.SingleBorderWindow;
+            _container.ResizeMode = ResizeMode.NoResize;
             _container.Content = view;
             _container.ShowDialog();
 
