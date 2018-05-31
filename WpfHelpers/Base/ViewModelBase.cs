@@ -7,7 +7,6 @@ namespace NullVoidCreations.WpfHelpers.Base
 {
     public abstract class ViewModelBase: NotificationBase
     {
-        bool _isDialog;
         object _result;
         Window _container;
 
@@ -35,8 +34,6 @@ namespace NullVoidCreations.WpfHelpers.Base
             if (view == null)
                 throw new ArgumentNullException("view");
 
-            _isDialog = !_isDialog;
-
             _container = new Window();
             if (owner != null)
             {
@@ -57,14 +54,12 @@ namespace NullVoidCreations.WpfHelpers.Base
 
         protected void Close<TResult>(TResult result)
         {
-            if (!_isDialog)
+            if (_container == null)
                 throw new InvalidOperationException("Operation is only allowed when open using ShowDialog.");
 
             _result = result;
             _container.Close();
             _container = null;
-
-            _isDialog = !_isDialog;
         }
     }
 }
