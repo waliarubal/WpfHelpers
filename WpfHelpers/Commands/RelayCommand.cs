@@ -1,6 +1,7 @@
 ﻿using NullVoidCreations.WpfHelpers.Base;
 using System;
 using System.ComponentModel;
+using System.Windows;
 
 namespace NullVoidCreations.WpfHelpers.Commands
 {
@@ -16,6 +17,8 @@ namespace NullVoidCreations.WpfHelpers.Commands
 
             _action = action;
             IsEnabled = isEnabled;
+
+            
         }
 
         public override void Execute(object parameter)
@@ -26,7 +29,7 @@ namespace NullVoidCreations.WpfHelpers.Commands
             {
                 try
                 {
-                    _action.Invoke();
+                    Application.Current.Dispatcher.Invoke(_action);
                 }
                 catch (Exception ex)
                 {
