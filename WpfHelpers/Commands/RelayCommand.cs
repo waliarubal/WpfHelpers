@@ -17,8 +17,6 @@ namespace NullVoidCreations.WpfHelpers.Commands
 
             _action = action;
             IsEnabled = isEnabled;
-
-            
         }
 
         public override void Execute(object parameter)

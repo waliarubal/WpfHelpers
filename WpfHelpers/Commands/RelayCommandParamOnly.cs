@@ -1,6 +1,7 @@
 ﻿using NullVoidCreations.WpfHelpers.Base;
 using System;
 using System.ComponentModel;
+using System.Windows;
 
 namespace NullVoidCreations.WpfHelpers.Commands
 {
@@ -24,7 +25,7 @@ namespace NullVoidCreations.WpfHelpers.Commands
 
             if (IsSynchronous)
             {
-                _action.Invoke((P)parameter);
+                Application.Current.Dispatcher.Invoke(_action, (P)parameter);
 
                 IsExecuting = false;
                 return;
