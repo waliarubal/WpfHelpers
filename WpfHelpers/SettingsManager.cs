@@ -110,7 +110,7 @@ namespace NullVoidCreations.WpfHelpers
         public void SetValue<T>(string key, T value)
         {
             string stringValue;
-            if (typeof(T) == typeof(string) && value == null)
+            if (value == null)
                 stringValue = string.Empty;
             else
                 stringValue = value.ToString();
