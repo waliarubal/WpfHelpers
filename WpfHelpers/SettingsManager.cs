@@ -109,10 +109,16 @@ namespace NullVoidCreations.WpfHelpers
 
         public void SetValue<T>(string key, T value)
         {
-            if (_settings.ContainsKey(key))
-                _settings[key] = value.ToString();
+            string stringValue;
+            if (typeof(T) == typeof(string) && value == null)
+                stringValue = string.Empty;
             else
-                _settings.Add(key, value.ToString());
+                stringValue = value.ToString();
+
+            if (_settings.ContainsKey(key))
+                _settings[key] = stringValue;
+            else
+                _settings.Add(key, stringValue);
         }
     }
 }
