@@ -99,12 +99,12 @@ namespace NullVoidCreations.WpfHelpers
             }
         }
 
-        public T GetValue<T>(string key)
+        public T GetValue<T>(string key, T defaultValue = default(T))
         {
             if (_settings.ContainsKey(key))
                 return (T) Convert.ChangeType(_settings[key], typeof(T));
             else
-                return default(T);
+                return defaultValue;
         }
 
         public void SetValue<T>(string key, T value)
