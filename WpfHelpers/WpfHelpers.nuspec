@@ -3,7 +3,7 @@
   <metadata>
     <!-- required -->
     <id>NullVoidCreations.WpfHelpers</id>
-    <version>1.0.31</version>
+    <version>18.7.4.13</version>
     <description>A set of classes and resources to get up to speed with a new WPF MVVM based project targeting .NET Framework 4.0.</description>
     <authors>Rubal Walia</authors>
     <!-- optional -->
