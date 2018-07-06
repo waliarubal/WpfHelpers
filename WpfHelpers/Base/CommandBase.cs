@@ -24,7 +24,7 @@ namespace NullVoidCreations.WpfHelpers.Base
         public bool IsSynchronous
         {
             get { return _isSynchonous; }
-            set { Set("IsSynchronous", ref _isSynchonous, value); }
+            set { Set(nameof(IsSynchronous), ref _isSynchonous, value); }
         }
 
         public bool IsEnabled
@@ -32,7 +32,7 @@ namespace NullVoidCreations.WpfHelpers.Base
             get { return _isEnabled; }
             set
             {
-                Set("IsEnabled", ref _isEnabled, value);
+                Set(nameof(IsEnabled), ref _isEnabled, value);
                 RaiseCanExecuteChanged();
             }
         }
@@ -45,7 +45,7 @@ namespace NullVoidCreations.WpfHelpers.Base
                 if (value == _isExecuting)
                     return;
 
-                Set("IsExecuting", ref _isExecuting, value);
+                Set(nameof(IsExecuting), ref _isExecuting, value);
                 RaiseCanExecuteChanged();
             }
         }

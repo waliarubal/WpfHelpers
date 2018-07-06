@@ -9,6 +9,7 @@ namespace NullVoidCreations.WpfHelpers.Commands
     {
         readonly Func<P, R> _action;
         readonly Action<R> _callback;
+        bool _isCallbackSynchronous;
         BackgroundWorker _worker;
 
         public RelayCommand(Func<P, R> action, Action<R> callback, bool isEnabled = true)
@@ -22,6 +23,16 @@ namespace NullVoidCreations.WpfHelpers.Commands
             _callback = callback;
             IsEnabled = isEnabled;
         }
+
+        #region properties
+
+        public bool IsCallbackSynchronous
+        {
+            get { return _isCallbackSynchronous; }
+            set { Set(nameof(IsCallbackSynchronous), ref _isCallbackSynchronous, value); }
+        }
+
+        #endregion
 
         public override void Execute(object parameter)
         {
@@ -49,7 +60,11 @@ namespace NullVoidCreations.WpfHelpers.Commands
         private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             var result = (R)e.Result;
-            _callback.Invoke(result);
+
+            if (IsCallbackSynchronous)
+                Application.Current.Dispatcher.Invoke(_callback, result);
+            else
+                _callback.Invoke(result);
 
             IsExecuting = false;
         }

@@ -21,8 +21,6 @@ namespace NullVoidCreations.WpfHelpers
             _derivationIterations = 1000;
         }
 
-        #region methods
-
         public string Encrypt(string plainText, string passPhrase)
         {
             // Salt and IV is randomly generated each time, but is preprended to encrypted cipher text
@@ -98,9 +96,9 @@ namespace NullVoidCreations.WpfHelpers
             }
         }
 
-        #endregion
+        #region private methods
 
-        private byte[] Generate256BitsOfRandomEntropy()
+        byte[] Generate256BitsOfRandomEntropy()
         {
             var randomBytes = new byte[32]; // 32 Bytes will give us 256 bits.
             using (var rngCsp = new RNGCryptoServiceProvider())
@@ -110,5 +108,7 @@ namespace NullVoidCreations.WpfHelpers
             }
             return randomBytes;
         }
+
+        #endregion
     }
 }
