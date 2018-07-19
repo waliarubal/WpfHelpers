@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,6 +28,14 @@ namespace NullVoidCreations.WpfHelpers.Base
             }
 
             return null;
+        }
+
+        protected bool IsInDesignMode
+        {
+            get
+            {
+                return DesignerProperties.GetIsInDesignMode(new DependencyObject());
+            }
         }
 
         public TResult ShowDialog<TResult>(Control view, Window owner = null)
