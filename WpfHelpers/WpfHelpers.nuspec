@@ -3,12 +3,12 @@
   <metadata>
     <!-- required -->
     <id>NullVoidCreations.WpfHelpers</id>
-    <version>18.7.19.17</version>
+    <version>18.7.28.14</version>
     <description>A set of classes and resources to get up to speed with a new WPF MVVM based project targeting .NET Framework 4.0.</description>
     <authors>Rubal Walia</authors>
     <!-- optional -->
     <title>WPF Helpers</title>
-    <owners>Rubal Walia</owners>
+    <owners>waliarubal</owners>
     <projectUrl>https://github.com/waliarubal/WpfHelpers</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes></releaseNotes>
