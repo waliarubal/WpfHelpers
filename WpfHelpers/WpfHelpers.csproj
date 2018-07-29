@@ -78,7 +78,6 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Management" />
     <Reference Include="System.Net" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -116,7 +115,6 @@
     </Compile>
     <Compile Include="Extensions.cs" />
     <Compile Include="FileSystemHelper.cs" />
-    <Compile Include="License.cs" />
     <Compile Include="SettingsManager.cs" />
     <Compile Include="StringCipher.cs" />
     <Compile Include="PlatformInvoke.cs" />
