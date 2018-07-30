@@ -216,7 +216,9 @@ namespace NullVoidCreations.WpfHelpers
 
             document.AppendChild(root);
 
-            document.Save(fileName);
+            var xml = document.ToXmlString().Encrypt(PASSWORD);
+            File.WriteAllText(fileName, xml);
+
             _fileName = fileName;
         }
 
@@ -318,6 +320,7 @@ namespace NullVoidCreations.WpfHelpers
             var license = new StrongLicense();
             license.SerialKey = licenseBuilder.ToString();
             license.GenerateActivationKey(isssueDate, expirationDate, email, machineKey, machineName);
+            license.Save(fileName);
             return license;
         }
 
@@ -329,9 +332,10 @@ namespace NullVoidCreations.WpfHelpers
             if (!File.Exists(fileName))
                 return license;
 
-            var document = new XmlDocument();
-            document.Load(fileName);
+            var xml = File.ReadAllText(fileName).Decrypt(PASSWORD);
 
+            var document = new XmlDocument();
+            document.LoadXml(xml);
             try
             {
                 license = new StrongLicense

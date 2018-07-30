@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml;
 
 namespace NullVoidCreations.WpfHelpers
 {
@@ -79,6 +80,17 @@ namespace NullVoidCreations.WpfHelpers
             return false;
         }
 
+        public static string ToXmlString(this XmlDocument document)
+        {
+            using (var stringWriter = new StringWriter())
+            using (var xmlTextWriter = XmlWriter.Create(stringWriter))
+            {
+                document.WriteTo(xmlTextWriter);
+                xmlTextWriter.Flush();
+                return stringWriter.GetStringBuilder().ToString();
+            }
+        }
+
         public static string GetStartupDirectory(this Application application)
         {
             return Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
@@ -87,6 +99,11 @@ namespace NullVoidCreations.WpfHelpers
         public static StringBuilder AppendLineFormatted(this StringBuilder instance, string format, params object[] parts)
         {
             return instance.AppendLine(string.Format(format, parts));
+        }
+
+        public static StringBuilder AppendLine(this StringBuilder instance, string format, params object[] parts)
+        {
+            return AppendLineFormatted(instance, format, parts);
         }
 
         public static DateTime GetInternetTime(this DateTime instance, Uri url = null)
@@ -123,10 +140,7 @@ namespace NullVoidCreations.WpfHelpers
             return stringCipher.Decrypt(cipherText, password);
         }
 
-        public static StringBuilder AppendLine(this StringBuilder builder, string format, params object[] parts)
-        {
-            return builder.AppendLine(string.Format(format, parts));
-        }
+        
 
         public static SecureString ToSecureString(this string stringToConvert)
         {
