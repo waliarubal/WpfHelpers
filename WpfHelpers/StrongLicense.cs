@@ -69,7 +69,6 @@ namespace NullVoidCreations.WpfHelpers
                     IsActivated = IsValid(this);
 
                     _activationKey = value;
-                    IsActivated = true;
                 }
                 catch (Exception)
                 {
