@@ -341,10 +341,10 @@ namespace NullVoidCreations.Licensing
                 license = new StrongLicense
                 {
                     _fileName = fileName,
-                    SerialKey = document.SelectSingleNode("/License/SerialKey").InnerText,
-                    ActivationKey = document.SelectSingleNode("/License/ActivationKey").InnerText,
                     MachineKey = document.SelectSingleNode("/License/MachineKey").InnerText,
-                    MachineName = document.SelectSingleNode("/License/MachineName").InnerText
+                    MachineName = document.SelectSingleNode("/License/MachineName").InnerText,
+                    SerialKey = document.SelectSingleNode("/License/SerialKey").InnerText,
+                    ActivationKey = document.SelectSingleNode("/License/ActivationKey").InnerText
                 };
             }
             catch(Exception ex)
