@@ -1,4 +1,4 @@
-﻿using NullVoidCreations.WpfHelpers;
+﻿using NullVoidCreations.Licensing;
 using System;
 using System.IO;
 

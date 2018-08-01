@@ -1,10 +1,11 @@
-﻿using System;
+﻿using NullVoidCreations.WpfHelpers;
+using System;
 using System.IO;
 using System.Management;
 using System.Text;
 using System.Xml;
 
-namespace NullVoidCreations.WpfHelpers
+namespace NullVoidCreations.Licensing
 {
     public class StrongLicense: IDisposable
     {

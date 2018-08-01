@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfHelpers", "WpfHelpers\Wp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialGenerator", "SerialGenerator\SerialGenerator.csproj", "{9448089C-1F03-446F-9247-267DA1EEF46A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Licensing", "Licensing\Licensing.csproj", "{6FB8D9AA-F53F-446E-A896-0AFB16BF7661}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9448089C-1F03-446F-9247-267DA1EEF46A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9448089C-1F03-446F-9247-267DA1EEF46A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9448089C-1F03-446F-9247-267DA1EEF46A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FB8D9AA-F53F-446E-A896-0AFB16BF7661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FB8D9AA-F53F-446E-A896-0AFB16BF7661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FB8D9AA-F53F-446E-A896-0AFB16BF7661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FB8D9AA-F53F-446E-A896-0AFB16BF7661}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

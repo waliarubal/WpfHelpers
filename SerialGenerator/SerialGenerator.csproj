@@ -47,9 +47,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WpfHelpers\WpfHelpers.csproj">
-      <Project>{91a492c0-dec6-4ac7-839f-c127441333a7}</Project>
-      <Name>WpfHelpers</Name>
+    <ProjectReference Include="..\Licensing\Licensing.csproj">
+      <Project>{6fb8d9aa-f53f-446e-a896-0afb16bf7661}</Project>
+      <Name>Licensing</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
