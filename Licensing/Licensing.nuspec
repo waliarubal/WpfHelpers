@@ -3,7 +3,7 @@
   <metadata>
     <!-- required -->
     <id>NullVoidCreations.Licensing</id>
-    <version>18.8.1.14</version>
+    <version>18.8.9.21</version>
     <description>A set of classes to implement software licensing based project targeting .NET Framework 4.0.</description>
     <authors>Rubal Walia</authors>
     <!-- optional -->

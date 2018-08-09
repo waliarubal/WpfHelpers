@@ -126,6 +126,24 @@ namespace NullVoidCreations.Licensing
             private set;
         }
 
+        public string BusinessName
+        {
+            get;
+            private set;
+        }
+
+        public string ContactPerson
+        {
+            get;
+            private set;
+        }
+
+        public string ContactNumber
+        {
+            get;
+            private set;
+        }
+
         public DateTime IssueDate
         {
             get;
@@ -152,7 +170,7 @@ namespace NullVoidCreations.Licensing
 
             IsActivated = false;
             _serialKey = _activationKey = _fileName = null;
-            Segment1 = Segment2 = Segment3 = Segment4 = Email = null;
+            Segment1 = Segment2 = Segment3 = Segment4 = Email = BusinessName = ContactPerson = ContactNumber = null;
             ExpirationDate = IssueDate = DateTime.MinValue;
         }
 
@@ -166,11 +184,22 @@ namespace NullVoidCreations.Licensing
             return null;
         }
 
-        void GenerateActivationKey(DateTime isssueDate, DateTime expirationDate, string email, string machineKey, string machineName)
+        void GenerateActivationKey(
+            DateTime isssueDate, 
+            DateTime expirationDate, 
+            string email, 
+            string machineKey, 
+            string machineName,
+            string businessName,
+            string contactPerson,
+            string contactNumber)
         {
             IssueDate = isssueDate;
             ExpirationDate = expirationDate;
             Email = email;
+            BusinessName = businessName;
+            ContactPerson = contactPerson;
+            ContactNumber = contactNumber;
             MachineKey = machineKey;
             MachineName = machineName;
 
@@ -198,21 +227,33 @@ namespace NullVoidCreations.Licensing
             var document = new XmlDocument();
             var root = document.CreateElement("License");
 
-            var serialKeyNode = document.CreateElement("SerialKey");
-            serialKeyNode.InnerText = SerialKey;
-            root.AppendChild(serialKeyNode);
+            var tempNode = document.CreateElement(nameof(SerialKey));
+            tempNode.InnerText = SerialKey;
+            root.AppendChild(tempNode);
 
-            var activationKeyNode = document.CreateElement("ActivationKey");
-            activationKeyNode.InnerText = ActivationKey;
-            root.AppendChild(activationKeyNode);
+            tempNode = document.CreateElement(nameof(ActivationKey));
+            tempNode.InnerText = ActivationKey;
+            root.AppendChild(tempNode);
 
-            var machineSerialNode = document.CreateElement("MachineKey");
-            machineSerialNode.InnerText = MachineKey;
-            root.AppendChild(machineSerialNode);
+            tempNode = document.CreateElement(nameof(MachineKey));
+            tempNode.InnerText = MachineKey;
+            root.AppendChild(tempNode);
 
-            var machineNameNode = document.CreateElement("MachineName");
-            machineNameNode.InnerText = MachineName;
-            root.AppendChild(machineNameNode);
+            tempNode = document.CreateElement(nameof(MachineName));
+            tempNode.InnerText = MachineName;
+            root.AppendChild(tempNode);
+
+            tempNode = document.CreateElement(nameof(BusinessName));
+            tempNode.InnerText = BusinessName;
+            root.AppendChild(tempNode);
+
+            tempNode = document.CreateElement(nameof(ContactPerson));
+            tempNode.InnerText = ContactPerson;
+            root.AppendChild(tempNode);
+
+            tempNode = document.CreateElement(nameof(ContactNumber));
+            tempNode.InnerText = ContactNumber;
+            root.AppendChild(tempNode);
 
             document.AppendChild(root);
 
@@ -292,15 +333,21 @@ namespace NullVoidCreations.Licensing
             DateTime isssueDate,
             DateTime expirationDate,
             string email,
+            string businessName,
+            string contactPerson,
+            string contactNumber,
             string fileName)
         {
-            return Generate(isssueDate, expirationDate, email, Environment.MachineName, GetMachineKey(), fileName);
+            return Generate(isssueDate, expirationDate, email, businessName, contactPerson, contactNumber, Environment.MachineName, GetMachineKey(), fileName);
         }
 
         public static StrongLicense Generate(
             DateTime isssueDate, 
             DateTime expirationDate, 
             string email, 
+            string businessName,
+            string contactPerson,
+            string contactNumber,
             string machineName, 
             string machineKey, 
             string fileName)
@@ -319,7 +366,7 @@ namespace NullVoidCreations.Licensing
 
             var license = new StrongLicense();
             license.SerialKey = licenseBuilder.ToString();
-            license.GenerateActivationKey(isssueDate, expirationDate, email, machineKey, machineName);
+            license.GenerateActivationKey(isssueDate, expirationDate, email, machineKey, machineName, businessName, contactPerson, contactNumber);
             license.Save(fileName);
             return license;
         }
@@ -344,7 +391,10 @@ namespace NullVoidCreations.Licensing
                     MachineKey = document.SelectSingleNode("/License/MachineKey").InnerText,
                     MachineName = document.SelectSingleNode("/License/MachineName").InnerText,
                     SerialKey = document.SelectSingleNode("/License/SerialKey").InnerText,
-                    ActivationKey = document.SelectSingleNode("/License/ActivationKey").InnerText
+                    ActivationKey = document.SelectSingleNode("/License/ActivationKey").InnerText,
+                    BusinessName = document.SelectSingleNode("/License/BusinessName").InnerText,
+                    ContactPerson = document.SelectSingleNode("/License/ContactPerson").InnerText,
+                    ContactNumber = document.SelectSingleNode("/License/ContactNumber").InnerText
                 };
             }
             catch(Exception ex)
