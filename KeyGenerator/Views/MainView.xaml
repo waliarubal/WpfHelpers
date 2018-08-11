@@ -1,0 +1,72 @@
+﻿<Window
+    x:Class="NullVoidCreations.KeyGenerator.Views.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:NullVoidCreations.KeyGenerator.ViewModels"
+    Title="Serial Generator"
+    Width="640"
+    SizeToContent="Height"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="BaseStyle" TargetType="FrameworkElement">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style BasedOn="{StaticResource ResourceKey=BaseStyle}" TargetType="Label" />
+        <Style BasedOn="{StaticResource ResourceKey=BaseStyle}" TargetType="TextBox" />
+        <Style BasedOn="{StaticResource ResourceKey=BaseStyle}" TargetType="Button">
+            <Setter Property="MinWidth" Value=" 80" />
+        </Style>
+    </Window.Resources>
+    <Grid Margin="4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Content="Business Name:" />
+        <TextBox Grid.Column="1" />
+
+        <Label Grid.Row="1" Content="Contact Person:" />
+        <TextBox Grid.Row="1" Grid.Column="1" />
+
+        <Label Grid.Row="2" Content="Contact Number:" />
+        <TextBox Grid.Row="2" Grid.Column="1" />
+
+        <Label Grid.Row="3" Content="E-mail Address:" />
+        <TextBox Grid.Row="3" Grid.Column="1" />
+
+        <Label Grid.Row="4" Content="Machine Name:" />
+        <TextBox Grid.Row="4" Grid.Column="1" />
+
+        <Label Grid.Row="5" Content="BIOS Serial:" />
+        <TextBox Grid.Row="5" Grid.Column="1" />
+
+        <Label Grid.Row="6" Content="Days:" />
+        <TextBox Grid.Row="6" Grid.Column="1" />
+
+        <StackPanel
+            Grid.Row="7"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <Button Content="Fill Machine Information" />
+            <Button Content="Generate" />
+        </StackPanel>
+    </Grid>
+</Window>
