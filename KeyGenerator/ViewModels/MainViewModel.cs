@@ -13,7 +13,7 @@ namespace NullVoidCreations.KeyGenerator.ViewModels
     {
         string _businessName, _contactPerson, _contactNumber, _email, _machineName, _biosSerial;
         int _days;
-        ICommand _generate, _fillMachineInfo;
+        ICommand _generate, _fillMachineInfo, _reset;
 
         #region properties
 
@@ -85,7 +85,27 @@ namespace NullVoidCreations.KeyGenerator.ViewModels
             }
         }
 
+        public ICommand ResetCommand
+        {
+            get
+            {
+                if (_reset == null)
+                    _reset = new RelayCommand(Reset);
+
+                return _reset;
+            }
+        }
+
         #endregion
+
+        void Reset()
+        {
+            BusinessName = "NullVoid Creations";
+            ContactPerson = "Rubal Walia";
+            ContactNumber = "+91 99288 93416";
+            Email = "walia.rubal@gmail.com";
+            Days = 30;
+        }
 
         void Generate()
         {
