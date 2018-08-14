@@ -1,4 +1,10 @@
-﻿using NullVoidCreations.WpfHelpers.Base;
+﻿using NullVoidCreations.Licensing;
+using NullVoidCreations.WpfHelpers;
+using NullVoidCreations.WpfHelpers.Base;
+using NullVoidCreations.WpfHelpers.Commands;
+using System;
+using System.IO;
+using System.Windows;
 using System.Windows.Input;
 
 namespace NullVoidCreations.KeyGenerator.ViewModels
@@ -62,7 +68,7 @@ namespace NullVoidCreations.KeyGenerator.ViewModels
             get
             {
                 if (_generate == null)
-                    _generate = null;
+                    _generate = new RelayCommand(Generate) { IsSynchronous = true };
 
                 return _generate;
             }
@@ -73,12 +79,38 @@ namespace NullVoidCreations.KeyGenerator.ViewModels
             get
             {
                 if (_fillMachineInfo == null)
-                    _fillMachineInfo = null;
+                    _fillMachineInfo = new RelayCommand(FillMachineInfo);
 
                 return _fillMachineInfo;
             }
         }
 
         #endregion
+
+        void Generate()
+        {
+            foreach(var property in GetType().GetProperties())
+            {
+                var data = property.GetValue(this, null);
+                if (data == null || string.IsNullOrEmpty(data.ToString()))
+                {
+                    MessageBox.Show(string.Format("Please enter value for {0}.", property.Name.SplitCamelCase()), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
+
+            var licenseFile = Path.Combine(Application.Current.GetStartupDirectory(), string.Format("{0}_license.aes", Email));
+            var license = StrongLicense.Generate(DateTime.Now, DateTime.Now.AddDays(Days), Email, BusinessName, ContactPerson, ContactNumber, licenseFile);
+            if (license == null)
+                MessageBox.Show("Failed to generate license.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            else
+                MessageBox.Show("License generated successfully.");
+        }
+
+        void FillMachineInfo()
+        {
+            MachineName = Environment.MachineName;
+            BiosSerial = StrongLicense.GetMachineKey();
+        }
     }
 }

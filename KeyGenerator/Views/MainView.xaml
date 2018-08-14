@@ -40,33 +40,51 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Label Content="Business Name:" />
-        <TextBox Grid.Column="1" />
+        <TextBox Grid.Column="1" Text="{Binding Path=BusinessName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <Label Grid.Row="1" Content="Contact Person:" />
-        <TextBox Grid.Row="1" Grid.Column="1" />
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="1"
+            Text="{Binding Path=ContactPerson, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <Label Grid.Row="2" Content="Contact Number:" />
-        <TextBox Grid.Row="2" Grid.Column="1" />
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="{Binding Path=ContactNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <Label Grid.Row="3" Content="E-mail Address:" />
-        <TextBox Grid.Row="3" Grid.Column="1" />
+        <TextBox
+            Grid.Row="3"
+            Grid.Column="1"
+            Text="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <Label Grid.Row="4" Content="Machine Name:" />
-        <TextBox Grid.Row="4" Grid.Column="1" />
+        <TextBox
+            Grid.Row="4"
+            Grid.Column="1"
+            Text="{Binding Path=MachineName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <Label Grid.Row="5" Content="BIOS Serial:" />
-        <TextBox Grid.Row="5" Grid.Column="1" />
+        <TextBox
+            Grid.Row="5"
+            Grid.Column="1"
+            Text="{Binding Path=BiosSerial, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <Label Grid.Row="6" Content="Days:" />
-        <TextBox Grid.Row="6" Grid.Column="1" />
+        <TextBox
+            Grid.Row="6"
+            Grid.Column="1"
+            Text="{Binding Path=Days, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <StackPanel
             Grid.Row="7"
             Grid.ColumnSpan="2"
             HorizontalAlignment="Right"
             Orientation="Horizontal">
-            <Button Content="Fill Machine Information" />
-            <Button Content="Generate" />
+            <Button Command="{Binding Path=FillMachineInformationCommand, Mode=OneTime}" Content="Fill Machine Information" />
+            <Button Command="{Binding Path=GenerateCommand, Mode=OneTime}" Content="Generate" />
         </StackPanel>
     </Grid>
 </Window>
