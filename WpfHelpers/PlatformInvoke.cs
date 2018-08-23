@@ -279,7 +279,7 @@ namespace NullVoidCreations.WpfHelpers
 
             var startupInfo = new StartupInfo();
             startupInfo.cb = Marshal.SizeOf(typeof(StartupInfo));
-            startupInfo.title = "NFS Workspace Addin Manager";
+            //startupInfo.title = "NFS Workspace Addin Manager";
 
             var processInfo = new ProcessInfo();
 
@@ -319,7 +319,7 @@ namespace NullVoidCreations.WpfHelpers
 
         public IntPtr GetHandle(Visual element)
         {
-            var source = (HwndSource)HwndSource.FromVisual(element);
+            var source = (HwndSource)PresentationSource.FromVisual(element);
             return source.Handle;
         }
 
@@ -345,6 +345,11 @@ namespace NullVoidCreations.WpfHelpers
         public void Minimize(IntPtr hWnd)
         {
             ShowWindow(hWnd, (int)WindowShowStyle.Minimize);
+        }
+
+        public void Maximize(IntPtr hWnd)
+        {
+            ShowWindow(hWnd, (int)WindowShowStyle.Maximize);
         }
 
         public void Show(IntPtr hWnd)

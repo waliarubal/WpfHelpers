@@ -23,6 +23,18 @@ namespace NullVoidCreations.WpfHelpers
             return windowHwnd.Handle;
         }
 
+        public static void Maximize(this Window window)
+        {
+            var pInvoke = new PlatformInvoke();
+            pInvoke.Maximize(window.GetHandle());
+        }
+
+        public static void Minimize(this Window window)
+        {
+            var pInvoke = new PlatformInvoke();
+            pInvoke.Minimize(window.GetHandle());
+        }
+
         public static string SplitCamelCase(this string stringToSplit)
         {
             return Regex.Replace(
