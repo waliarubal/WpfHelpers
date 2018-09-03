@@ -11,7 +11,7 @@ namespace NullVoidCreations.KeyGenerator.ViewModels
 {
     class MainViewModel: ViewModelBase
     {
-        string _businessName, _contactPerson, _contactNumber, _email, _machineName, _biosSerial;
+        string _businessName, _contactPerson, _contactNumber, _email, _machineName, _biosSerial, _serialKey, _activationKey;
         int _days;
         ICommand _generate, _fillMachineInfo, _reset;
 
@@ -57,6 +57,18 @@ namespace NullVoidCreations.KeyGenerator.ViewModels
         {
             get { return _days; }
             set { Set(nameof(Days), ref _days, value); }
+        }
+
+        public string SerialKey
+        {
+            get { return _serialKey; }
+            private set { Set(nameof(SerialKey), ref _serialKey, value); }
+        }
+
+        public string ActivationKey
+        {
+            get { return _activationKey; }
+            private set { Set(nameof(ActivationKey), ref _activationKey, value); }
         }
 
         #endregion
@@ -105,12 +117,16 @@ namespace NullVoidCreations.KeyGenerator.ViewModels
             ContactNumber = "+91 99288 93416";
             Email = "walia.rubal@gmail.com";
             Days = 30;
+            SerialKey = ActivationKey = string.Empty;
         }
 
         void Generate()
         {
             foreach(var property in GetType().GetProperties())
             {
+                if (property.GetSetMethod() == null)
+                    continue;
+
                 var data = property.GetValue(this, null);
                 if (data == null || string.IsNullOrEmpty(data.ToString()))
                 {
@@ -121,10 +137,13 @@ namespace NullVoidCreations.KeyGenerator.ViewModels
 
             var licenseFile = Path.Combine(Application.Current.GetStartupDirectory(), string.Format("{0}_license.aes", Email));
             var license = StrongLicense.Generate(DateTime.Now, DateTime.Now.AddDays(Days), Email, BusinessName, ContactPerson, ContactNumber, licenseFile);
+            SerialKey = license.SerialKey;
+            ActivationKey = license.ActivationKey;
+            Clipboard.SetText(license.ToString());
             if (license == null)
                 MessageBox.Show("Failed to generate license.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             else
-                MessageBox.Show("License generated successfully.");
+                MessageBox.Show("License generated successfully and copied to clipboard.");
         }
 
         void FillMachineInfo()

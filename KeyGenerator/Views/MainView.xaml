@@ -8,6 +8,7 @@
     xmlns:vm="clr-namespace:NullVoidCreations.KeyGenerator.ViewModels"
     Title="Serial Generator"
     Width="640"
+    ResizeMode="NoResize"
     SizeToContent="Height"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -37,6 +38,8 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -93,5 +96,22 @@
             <Button Command="{Binding Path=FillMachineInformationCommand, Mode=OneTime}" Content="Fill Machine Information" />
             <Button Command="{Binding Path=GenerateCommand, Mode=OneTime}" Content="Generate" />
         </StackPanel>
+
+        <Label Grid.Row="8" Content="Serial Key:" />
+        <TextBox
+            Grid.Row="8"
+            Grid.Column="1"
+            IsReadOnly="True"
+            Text="{Binding Path=SerialKey, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        <Label Grid.Row="9" Content="Activation Key:" />
+        <TextBox
+            Grid.Row="9"
+            Grid.Column="1"
+            Height="80"
+            IsReadOnly="True"
+            Text="{Binding Path=ActivationKey, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto" />
     </Grid>
 </Window>

@@ -3,12 +3,12 @@ using System;
 using System.IO;
 using System.Management;
 using System.Text;
-using System.Xml;
 
 namespace NullVoidCreations.Licensing
 {
     public class StrongLicense: IDisposable
     {
+        const char SEPARATOR = 'ß';
         const string VALID_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
         const string PASSWORD = "QFByb3Blcl9QYXRvbGEhMjAxNQ==";
         const int KEY_SIZE = 23;
@@ -61,20 +61,8 @@ namespace NullVoidCreations.Licensing
                 if (string.IsNullOrEmpty(value))
                     throw new InvalidOperationException("Activation key not specified.");
 
-                var decryptedKey = value.Decrypt(PASSWORD);
-                try
-                {
-                    IssueDate = ExtractDate(decryptedKey, 0);
-                    ExpirationDate = ExtractDate(decryptedKey, 8);
-                    Email = decryptedKey.Substring(16, decryptedKey.Length - 16);
-                    IsActivated = IsValid(this);
-
-                    _activationKey = value;
-                }
-                catch (Exception)
-                {
+                if (!DecodeActivationKey(value))
                     throw new InvalidOperationException("Invalid activation key.");
-                }
             }
         }
 
@@ -170,7 +158,7 @@ namespace NullVoidCreations.Licensing
 
             IsActivated = false;
             _serialKey = _activationKey = _fileName = null;
-            Segment1 = Segment2 = Segment3 = Segment4 = Email = BusinessName = ContactPerson = ContactNumber = null;
+            Segment1 = Segment2 = Segment3 = Segment4 = Email = BusinessName = ContactPerson = ContactNumber = MachineKey = MachineName = null;
             ExpirationDate = IssueDate = DateTime.MinValue;
         }
 
@@ -203,15 +191,53 @@ namespace NullVoidCreations.Licensing
             MachineKey = machineKey;
             MachineName = machineName;
 
-            var key = string.Format("{0:0000}{1:00}{2:00}{3:0000}{4:00}{5:00}{6}",
-                IssueDate.Year,
-                IssueDate.Month,
-                IssueDate.Day,
-                ExpirationDate.Year,
-                ExpirationDate.Month,
-                ExpirationDate.Day,
-                Email);
-            _activationKey = key.Encrypt(PASSWORD);
+            var keyBuilder = new StringBuilder();
+            keyBuilder.AppendFormat("{0}{1}", SerialKey, SEPARATOR);
+            keyBuilder.AppendFormat("{0:0000}{1}", IssueDate.Year, SEPARATOR);
+            keyBuilder.AppendFormat("{0:00}{1}", IssueDate.Month, SEPARATOR);
+            keyBuilder.AppendFormat("{0:00}{1}", IssueDate.Day, SEPARATOR);
+            keyBuilder.AppendFormat("{0:0000}{1}", ExpirationDate.Year, SEPARATOR);
+            keyBuilder.AppendFormat("{0:00}{1}", ExpirationDate.Month, SEPARATOR);
+            keyBuilder.AppendFormat("{0:00}{1}", ExpirationDate.Day, SEPARATOR);
+            keyBuilder.AppendFormat("{0}{1}", Email, SEPARATOR);
+            keyBuilder.AppendFormat("{0}{1}", BusinessName, SEPARATOR);
+            keyBuilder.AppendFormat("{0}{1}", ContactPerson, SEPARATOR);
+            keyBuilder.AppendFormat("{0}{1}", ContactNumber, SEPARATOR);
+            keyBuilder.AppendFormat("{0}{1}", MachineKey, SEPARATOR);
+            keyBuilder.AppendFormat("{0}", MachineName);
+            _activationKey = keyBuilder.ToString().Encrypt(PASSWORD);
+        }
+
+        bool DecodeActivationKey(string activationKey)
+        {
+            _activationKey = activationKey;
+            var decryptedKey = activationKey.Decrypt(PASSWORD);
+
+            var keyParts = decryptedKey.Split(SEPARATOR);
+            if (keyParts.Length != 13)
+                return false;
+
+            var index = 0;
+            try
+            {
+                SerialKey = keyParts[index++];
+                IssueDate = new DateTime(int.Parse(keyParts[index++]), int.Parse(keyParts[index++]), int.Parse(keyParts[index++]));
+                ExpirationDate = new DateTime(int.Parse(keyParts[index++]), int.Parse(keyParts[index++]), int.Parse(keyParts[index++]));
+                Email = keyParts[index++];
+                BusinessName = keyParts[index++];
+                ContactPerson = keyParts[index++];
+                ContactNumber = keyParts[index++];
+                MachineKey = keyParts[index++];
+                MachineName = keyParts[index++];
+                IsActivated = IsValid(this);
+            }
+            catch (Exception)
+            {
+                _activationKey = null;
+                return false;
+            }
+
+            return true;
         }
 
         void Save(string fileName)
@@ -224,42 +250,7 @@ namespace NullVoidCreations.Licensing
             if (string.IsNullOrEmpty(SerialKey))
                 return;
 
-            var document = new XmlDocument();
-            var root = document.CreateElement("License");
-
-            var tempNode = document.CreateElement(nameof(SerialKey));
-            tempNode.InnerText = SerialKey;
-            root.AppendChild(tempNode);
-
-            tempNode = document.CreateElement(nameof(ActivationKey));
-            tempNode.InnerText = ActivationKey;
-            root.AppendChild(tempNode);
-
-            tempNode = document.CreateElement(nameof(MachineKey));
-            tempNode.InnerText = MachineKey;
-            root.AppendChild(tempNode);
-
-            tempNode = document.CreateElement(nameof(MachineName));
-            tempNode.InnerText = MachineName;
-            root.AppendChild(tempNode);
-
-            tempNode = document.CreateElement(nameof(BusinessName));
-            tempNode.InnerText = BusinessName;
-            root.AppendChild(tempNode);
-
-            tempNode = document.CreateElement(nameof(ContactPerson));
-            tempNode.InnerText = ContactPerson;
-            root.AppendChild(tempNode);
-
-            tempNode = document.CreateElement(nameof(ContactNumber));
-            tempNode.InnerText = ContactNumber;
-            root.AppendChild(tempNode);
-
-            document.AppendChild(root);
-
-            var xml = document.ToXmlString().Encrypt(PASSWORD);
-            File.WriteAllText(fileName, xml);
-
+            File.WriteAllText(fileName, ActivationKey);
             _fileName = fileName;
         }
 
@@ -298,7 +289,31 @@ namespace NullVoidCreations.Licensing
             return true;
         }
 
+        static string GenerateSerial()
+        {
+            var randomGenerator = new Random();
+            var licenseBuilder = new StringBuilder(KEY_SIZE);
+            for (int index = 1; index <= KEY_SIZE - 3; index++)
+            {
+                var serialChar = VALID_CHARACTERS[randomGenerator.Next(VALID_CHARACTERS.Length)];
+                if (index % 5 == 0 && index < KEY_SIZE - 3)
+                    licenseBuilder.AppendFormat("{0}-", serialChar);
+                else
+                    licenseBuilder.Append(serialChar);
+            }
+
+            return licenseBuilder.ToString();
+        }
+
         #endregion
+
+        public override string ToString()
+        {
+            var keyBuilder = new StringBuilder();
+            keyBuilder.AppendLine("Serial Key: {0}", SerialKey);
+            keyBuilder.AppendFormat("Activation Key: {0}", ActivationKey);
+            return keyBuilder.ToString();
+        }
 
         public static string GetMachineKey()
         {
@@ -336,7 +351,7 @@ namespace NullVoidCreations.Licensing
             string businessName,
             string contactPerson,
             string contactNumber,
-            string fileName)
+            string fileName = "")
         {
             return Generate(isssueDate, expirationDate, email, businessName, contactPerson, contactNumber, Environment.MachineName, GetMachineKey(), fileName);
         }
@@ -350,24 +365,38 @@ namespace NullVoidCreations.Licensing
             string contactNumber,
             string machineName, 
             string machineKey, 
-            string fileName)
+            string fileName = "")
         {
-            var randomGenerator = new Random();
-            var licenseBuilder = new StringBuilder(KEY_SIZE);
+            var license = new StrongLicense();
+            license.SerialKey = GenerateSerial();
+            license.GenerateActivationKey(isssueDate, expirationDate, email, machineKey, machineName, businessName, contactPerson, contactNumber);
 
-            for (int index = 1; index <= KEY_SIZE - 3; index++)
+            if (!string.IsNullOrEmpty(fileName))
+                license.Save(fileName);
+
+            return license;
+        }
+
+        public static StrongLicense Load(string serialKey, string activationKey, out string errorMessage)
+        {
+            errorMessage = null;
+            StrongLicense license = null;
+
+            try
             {
-                var serialChar = VALID_CHARACTERS[randomGenerator.Next(VALID_CHARACTERS.Length)];
-                if (index % 5 == 0 && index < KEY_SIZE - 3)
-                    licenseBuilder.AppendFormat("{0}-", serialChar);
-                else
-                    licenseBuilder.Append(serialChar);
+                license.ActivationKey = activationKey;
+                if (!license.SerialKey.Equals(serialKey, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    errorMessage = "Invalid serial key.";
+                    license = null;
+                }
+            }
+            catch(Exception ex)
+            {
+                errorMessage = ex.Message;
+                license = null;
             }
 
-            var license = new StrongLicense();
-            license.SerialKey = licenseBuilder.ToString();
-            license.GenerateActivationKey(isssueDate, expirationDate, email, machineKey, machineName, businessName, contactPerson, contactNumber);
-            license.Save(fileName);
             return license;
         }
 
@@ -379,22 +408,12 @@ namespace NullVoidCreations.Licensing
             if (!File.Exists(fileName))
                 return license;
 
-            var xml = File.ReadAllText(fileName).Decrypt(PASSWORD);
-
-            var document = new XmlDocument();
-            document.LoadXml(xml);
             try
             {
                 license = new StrongLicense
                 {
                     _fileName = fileName,
-                    MachineKey = document.SelectSingleNode("/License/MachineKey").InnerText,
-                    MachineName = document.SelectSingleNode("/License/MachineName").InnerText,
-                    SerialKey = document.SelectSingleNode("/License/SerialKey").InnerText,
-                    ActivationKey = document.SelectSingleNode("/License/ActivationKey").InnerText,
-                    BusinessName = document.SelectSingleNode("/License/BusinessName").InnerText,
-                    ContactPerson = document.SelectSingleNode("/License/ContactPerson").InnerText,
-                    ContactNumber = document.SelectSingleNode("/License/ContactNumber").InnerText
+                    ActivationKey = File.ReadAllText(fileName).Decrypt(PASSWORD)
                 };
             }
             catch(Exception ex)

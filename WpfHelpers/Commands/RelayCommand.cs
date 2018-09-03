@@ -29,7 +29,7 @@ namespace NullVoidCreations.WpfHelpers.Commands
                 {
                     Application.Current.Dispatcher.Invoke(_action);
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
                     throw ex;
                 }
