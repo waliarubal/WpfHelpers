@@ -18,3 +18,9 @@ This package is available via nuget, execute below mentioned command in nuget co
 ```
 Install-Package NullVoidCreations.WpfHelpers
 ```
+# Licensing
+
+Licensing is a component which developers can use in thier projects to incorporate machine bound licenses for their softwares. This package is available via nuget, execute below mentioned command in nuget console to include it.
+```
+Install-Package NullVoidCreations.Licensing
+```
