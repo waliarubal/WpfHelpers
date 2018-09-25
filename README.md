@@ -14,13 +14,13 @@ WPF helpers is set of classes and resources wrapped up in an assembly to get up 
 * **ColumnHeaderBehaivor** is a custom behavior to auto generate column headers of DataGrid based on annotation. It allows hiding of columns too.
 * **PasswordBoxBindingBehavior** allows binding password of a password box to a string property.
 
-This package is available via nuget, execute below mentioned command in nuget console.
+This package is available via nuget [here](https://www.nuget.org/packages/NullVoidCreations.WpfHelpers/), execute below mentioned command in nuget console.
 ```
 Install-Package NullVoidCreations.WpfHelpers
 ```
 # Licensing
 
-Licensing is a component which developers can use in thier projects to incorporate machine bound licenses for their softwares. This package is available via nuget, execute below mentioned command in nuget console to include it.
+Licensing is a component which developers can use in thier projects to incorporate machine bound licenses for their softwares. This package is available via nuget [here](https://www.nuget.org/packages/NullVoidCreations.Licensing/), execute below mentioned command in nuget console to include it.
 ```
 Install-Package NullVoidCreations.Licensing
 ```
