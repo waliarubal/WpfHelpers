@@ -3,7 +3,7 @@
   <metadata>
     <!-- required -->
     <id>NullVoidCreations.Licensing</id>
-    <version>18.9.3.18</version>
+    <version>18.10.2.18</version>
     <description>A set of classes to implement software licensing based project targeting .NET Framework 4.0.</description>
     <authors>Rubal Walia</authors>
     <!-- optional -->
@@ -14,5 +14,6 @@
     <releaseNotes></releaseNotes>
     <copyright>Copyright © Rubal Walia 2017 - 2018</copyright>
     <tags>WPF License</tags>
+    <iconUrl>https://github.com/waliarubal/WpfHelpers/raw/master/construction-workers-64.png</iconUrl>
   </metadata>
 </package>
