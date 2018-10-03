@@ -110,6 +110,7 @@
     <Compile Include="Converters\MultiValueConverter.cs" />
     <Compile Include="Converters\SecureStringToStringConverter.cs" />
     <Compile Include="DataStructures\Doublet.cs" />
+    <Compile Include="DataStructures\ExtendedObservableCollection.cs" />
     <Compile Include="DataStructures\ObservableDictionary.cs" />
     <Compile Include="DataStructures\Triplet.cs" />
     <Compile Include="DirectoryWalker.cs" />
