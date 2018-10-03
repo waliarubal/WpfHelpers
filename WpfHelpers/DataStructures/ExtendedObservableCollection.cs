@@ -26,7 +26,7 @@ namespace NullVoidCreations.WpfHelpers.DataStructures
                 Add(item);
         }
 
-        public ExtendedObservableCollection(Func<string> toStringOverride)
+        public ExtendedObservableCollection(Func<string> toStringOverride): this()
         {
             _toStringOverride = toStringOverride;
         }
