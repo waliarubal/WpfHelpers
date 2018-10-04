@@ -14,13 +14,14 @@ namespace NullVoidCreations.WpfHelpers.DataStructures
 
         #region constructors
 
-        public ExtendedObservableCollection()
+        public ExtendedObservableCollection(char separator = ',')
         {
+            Separator = separator;
             _toStringEventArgs = new PropertyChangedEventArgs(nameof(String));
             _toStringOverride = ToStringDefault;
         }
 
-        public ExtendedObservableCollection(IEnumerable<T> values): this()
+        public ExtendedObservableCollection(IEnumerable<T> values, char separator = ','): this(separator)
         {
             foreach (T item in values)
                 Add(item);
@@ -40,6 +41,8 @@ namespace NullVoidCreations.WpfHelpers.DataStructures
             get { return ToString(); }
         }
 
+        public char Separator { get; set; }
+
         #endregion
 
         string  ToStringDefault()
@@ -49,7 +52,7 @@ namespace NullVoidCreations.WpfHelpers.DataStructures
 
             var builder = new StringBuilder();
             foreach (var item in Items)
-                builder.AppendFormat("{0},", item);
+                builder.AppendFormat("{0}{1}", item, Separator);
             if (builder.Length > 0)
                 builder.Remove(builder.Length - 1, 1);
             return builder.ToString();
