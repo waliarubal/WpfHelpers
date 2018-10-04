@@ -162,12 +162,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Release (
-    del "$(TargetDir)*.nupkg"
-    nuget setApiKey oy2iac7n3x7ojuzat2kq4j7pthwpc3venkhylde3opfsia -source https://api.nuget.org/v3/index.json
-    nuget pack "$(ProjectPath)" -properties Configuration=Release
-    nuget push "NullVoidCreations.WpfHelpers.*.nupkg" -Source https://api.nuget.org/v3/index.json
-)</PostBuildEvent>
+    <PostBuildEvent>REM if $(ConfigurationName) == Release (
+REM    del "$(TargetDir)*.nupkg"
+REM    nuget setApiKey oy2iac7n3x7ojuzat2kq4j7pthwpc3venkhylde3opfsia -source https://api.nuget.org/v3/index.json
+REM    nuget pack "$(ProjectPath)" -properties Configuration=Release
+REM    nuget push "NullVoidCreations.WpfHelpers.*.nupkg" -Source https://api.nuget.org/v3/index.json
+REM )</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
