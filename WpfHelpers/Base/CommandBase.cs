@@ -8,7 +8,6 @@ namespace NullVoidCreations.WpfHelpers.Base
         public event EventHandler CanExecuteChanged;
 
         bool _isEnabled, _isExecuting, _isSynchonous;
-        readonly ViewModelBase _viewModel;
 
         #region constructor/destructor
 
