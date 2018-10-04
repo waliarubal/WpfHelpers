@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/kiopt9twsc3vyfov?svg=true)](https://ci.appveyor.com/project/waliarubal/wpfhelpers)
+
 # WPF Helpers
 
 WPF helpers is set of classes and resources wrapped up in an assembly to get up to speed with a new WPF MVVM based project targeting .NET Framework 4.0. As this targets framework 4.0, should work with .NET 4+ as well (haven't tested it though). As of now this assembly provides below mentioned features.
