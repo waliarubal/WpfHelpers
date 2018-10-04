@@ -14,15 +14,16 @@ namespace NullVoidCreations.WpfHelpers.DataStructures
 
         #region constructors
 
-        public ExtendedObservableCollection(char separator = ',')
+        public ExtendedObservableCollection()
         {
-            Separator = separator;
+            Separator = ',';
             _toStringEventArgs = new PropertyChangedEventArgs(nameof(String));
             _toStringOverride = ToStringDefault;
         }
 
-        public ExtendedObservableCollection(IEnumerable<T> values, char separator = ','): this(separator)
+        public ExtendedObservableCollection(IEnumerable<T> values, char separator = ','): this()
         {
+            Separator = separator;
             foreach (T item in values)
                 Add(item);
         }
