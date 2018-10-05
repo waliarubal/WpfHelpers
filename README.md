@@ -29,7 +29,7 @@ Install-Package NullVoidCreations.Licensing
 ```
 # Acknowledgements
 
-Many thanks to [JetBrains](https://www.jetbrains.com/) for providing free license of their .NET toolbelt. [AppVeyor](https://www.appveyor.com/) is being used for CI and CD. If you come across any issues or want new features added, kindly report/request them [here](https://github.com/waliarubal/WpfHelpers/issues).
+Many thanks to [JetBrains](https://www.jetbrains.com/) for providing free license of their .NET toolbelt. [AppVeyor](https://www.appveyor.com/) is being used for continous integration. If you come across any issues or want new features added, kindly report/request them [here](https://github.com/waliarubal/WpfHelpers/issues).
 
 [![JetBrains](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/JetBrains_Logo_2016.svg/220px-JetBrains_Logo_2016.svg.png "JetBrains Logo")](https://www.jetbrains.com/)
 [![AppVeyor](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Appveyor_logo.svg/220px-Appveyor_logo.svg.png)](https://www.appveyor.com/)
