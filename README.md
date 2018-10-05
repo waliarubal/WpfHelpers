@@ -15,6 +15,7 @@ WPF helpers is set of classes and resources wrapped up in an assembly to get up 
 * **ZipStorer** allows compression and decompression of ZIP archives.
 * **ColumnHeaderBehaivor** is a custom behavior to auto generate column headers of DataGrid based on annotation. It allows hiding of columns too.
 * **PasswordBoxBindingBehavior** allows binding password of a password box to a string property.
+* **ExtendedObservableCollection** can be bound to any text component on UI through its *String* property. It also provides a *Separactor* property to define character used in ToString method for separating items. Function to be evaluated to generate string representation of collection can be passes in constructor as well. 
 
 This package is available via nuget [here](https://www.nuget.org/packages/NullVoidCreations.WpfHelpers/), execute below mentioned command in nuget console.
 ```
@@ -28,9 +29,10 @@ Install-Package NullVoidCreations.Licensing
 ```
 # Acknowledgements
 
-Many thanks to [JetBrains](https://www.jetbrains.com/) for providing free license of their .NET toolbelt. If you come across any issues or want new features added, kindly report/request them [here](https://github.com/waliarubal/WpfHelpers/issues).
+Many thanks to [JetBrains](https://www.jetbrains.com/) for providing free license of their .NET toolbelt. [AppVeyor](https://www.appveyor.com/) is being used for CI and CD. If you come across any issues or want new features added, kindly report/request them [here](https://github.com/waliarubal/WpfHelpers/issues).
 
 [![JetBrains](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/JetBrains_Logo_2016.svg/220px-JetBrains_Logo_2016.svg.png "JetBrains Logo")](https://www.jetbrains.com/)
+[![AppVeyor](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Appveyor_logo.svg/220px-Appveyor_logo.svg.png)](https://www.appveyor.com/)
 
 Following projects rely on WPF Helpers and/or the Licensing component.
 * [eBay Smart Buy - Books](https://github.com/waliarubal/EbayWorker) which is a smart wat to get competitive prices for books from eBay.
