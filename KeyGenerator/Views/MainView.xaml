@@ -95,6 +95,7 @@
             Orientation="Horizontal">
             <Button Command="{Binding Path=FillMachineInformationCommand, Mode=OneTime}" Content="Fill Machine Information" />
             <Button Command="{Binding Path=GenerateCommand, Mode=OneTime}" Content="Generate" />
+            <Button Command="{Binding Path=ValidateCommand, Mode=OneTime}" Content="Validate" />
         </StackPanel>
 
         <Label Grid.Row="8" Content="Serial Key:" />

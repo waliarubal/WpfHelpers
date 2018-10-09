@@ -387,7 +387,7 @@ namespace NullVoidCreations.Licensing
             {
                 try
                 {
-                    license.ActivationKey = activationKey;
+                    license = new StrongLicense { ActivationKey = activationKey };
                     if (!serialKey.Equals(license.SerialKey, StringComparison.InvariantCultureIgnoreCase))
                     {
                         errorMessage = "Invalid serial key.";

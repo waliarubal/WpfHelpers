@@ -44,7 +44,7 @@ namespace Tests
             Assert.IsNull(errorMessage, errorMessage);
             Assert.AreEqual(license.SerialKey, loadedLicnse.SerialKey, "Serial keys don't match.");
             Assert.AreEqual(license.ActivationKey, loadedLicnse.ActivationKey, "Activation keys don't match.");
-            Assert.IsTrue(license.IsActivated, "License is not active.");
+            Assert.IsTrue(loadedLicnse.IsActivated, "License is not active.");
         }
     }
 }

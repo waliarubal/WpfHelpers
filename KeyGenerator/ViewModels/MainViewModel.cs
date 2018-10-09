@@ -13,7 +13,7 @@ namespace NullVoidCreations.KeyGenerator.ViewModels
     {
         string _businessName, _contactPerson, _contactNumber, _email, _machineName, _biosSerial, _serialKey, _activationKey;
         int _days;
-        ICommand _generate, _fillMachineInfo, _reset;
+        ICommand _generate, _fillMachineInfo, _reset, _validate;
 
         #region properties
 
@@ -108,6 +108,17 @@ namespace NullVoidCreations.KeyGenerator.ViewModels
             }
         }
 
+        public ICommand ValidateCommand
+        {
+            get
+            {
+                if (_validate == null)
+                    _validate = new RelayCommand(Validate);
+
+                return _validate;
+            }
+        }
+
         #endregion
 
         void Reset()
@@ -118,6 +129,21 @@ namespace NullVoidCreations.KeyGenerator.ViewModels
             Email = "walia.rubal@gmail.com";
             Days = 30;
             SerialKey = ActivationKey = string.Empty;
+        }
+
+        void Validate()
+        {
+            if (string.IsNullOrEmpty(SerialKey) || string.IsNullOrEmpty(ActivationKey))
+            {
+                MessageBox.Show("License not generated.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            var license = StrongLicense.Load(SerialKey, ActivationKey, out string errorMessage);
+            if (string.IsNullOrEmpty(errorMessage))
+                MessageBox.Show("License is valid.");
+            else
+                MessageBox.Show(errorMessage, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         void Generate()
