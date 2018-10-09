@@ -42,7 +42,7 @@
     <AssemblyOriginatorKeyFile>KeyGenerator.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>logo.ico</ApplicationIcon>
@@ -111,6 +111,12 @@
     <Resource Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Licensing\Licensing.csproj">
       <Project>{6fb8d9aa-f53f-446e-a896-0afb16bf7661}</Project>
       <Name>Licensing</Name>
@@ -119,12 +125,6 @@
       <Project>{91a492c0-dec6-4ac7-839f-c127441333a7}</Project>
       <Name>WpfHelpers</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Views\MainView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -59,7 +59,7 @@ namespace NullVoidCreations.Licensing
             private set
             {
                 if (string.IsNullOrEmpty(value))
-                    throw new InvalidOperationException("Activation key not specified.");
+                    throw new ArgumentNullException("Activation key not specified.");
 
                 if (!DecodeActivationKey(value))
                     throw new InvalidOperationException("Invalid activation key.");
@@ -379,22 +379,27 @@ namespace NullVoidCreations.Licensing
 
         public static StrongLicense Load(string serialKey, string activationKey, out string errorMessage)
         {
-            errorMessage = null;
             StrongLicense license = null;
 
-            try
+            if (string.IsNullOrEmpty(serialKey))
+                errorMessage = "Serial key not specified.";
+            else
             {
-                license.ActivationKey = activationKey;
-                if (!license.SerialKey.Equals(serialKey, StringComparison.InvariantCultureIgnoreCase))
+                try
                 {
-                    errorMessage = "Invalid serial key.";
+                    license.ActivationKey = activationKey;
+                    if (!serialKey.Equals(license.SerialKey, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        errorMessage = "Invalid serial key.";
+                        license = null;
+                    }
+                    errorMessage = null;
+                }
+                catch (Exception ex)
+                {
+                    errorMessage = ex.Message;
                     license = null;
                 }
-            }
-            catch(Exception ex)
-            {
-                errorMessage = ex.Message;
-                license = null;
             }
 
             return license;
