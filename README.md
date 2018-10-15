@@ -1,6 +1,6 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/kiopt9twsc3vyfov?svg=true)](https://ci.appveyor.com/project/waliarubal/wpfhelpers)
+[![Build status](https://ci.appveyor.com/api/projects/status/kiopt9twsc3vyfov?svg=true)](https://ci.appveyor.com/project/waliarubal/wpfhelpers) ![GitHub](https://img.shields.io/github/license/waliarubal/WpfHelpers.svg)
 
-# WPF Helpers
+# WPF Helpers [![NuGet](https://img.shields.io/nuget/v/NullVoidCreations.WpfHelpers.svg)](https://www.nuget.org/packages/NullVoidCreations.WpfHelpers/) [![NuGet](https://img.shields.io/nuget/dt/NullVoidCreations.WpfHelpers.svg)](https://www.nuget.org/packages/NullVoidCreations.WpfHelpers/)
 
 WPF helpers is set of classes and resources wrapped up in an assembly to get up to speed with a new WPF MVVM based project targeting .NET Framework 4.0. As this targets framework 4.0, should work with .NET 4+ as well (haven't tested it though). As of now this assembly provides below mentioned features.
 
@@ -21,7 +21,7 @@ This package is available via nuget [here](https://www.nuget.org/packages/NullVo
 ```
 Install-Package NullVoidCreations.WpfHelpers
 ```
-# Licensing
+# Licensing [![NuGet](https://img.shields.io/nuget/v/NullVoidCreations.Licensing.svg)](https://www.nuget.org/packages/NullVoidCreations.Licensing/) [![NuGet](https://img.shields.io/nuget/dt/NullVoidCreations.Licensing.svg)](https://www.nuget.org/packages/NullVoidCreations.Licensing/)
 
 Licensing is a component which developers can use in thier projects to incorporate machine bound licenses for their softwares. This package is available via nuget [here](https://www.nuget.org/packages/NullVoidCreations.Licensing/), execute below mentioned command in nuget console to include it.
 ```
