@@ -30,20 +30,20 @@ namespace NullVoidCreations.WpfHelpers.DataStructures
 
         public F First
         {
-            get { return _first; }
-            set { Set(nameof(First), ref _first, value, RaiseNotifiation); }
+            get => _first;
+            set => Set(nameof(First), ref _first, value, RaiseNotifiation);
         }
 
         public S Second
         {
-            get { return _second; }
-            set { Set(nameof(Second), ref _second, value, RaiseNotifiation); }
+            get => _second;
+            set => Set(nameof(Second), ref _second, value, RaiseNotifiation);
         }
 
         public T Third
         {
-            get { return _third; }
-            set { Set(nameof(Third), ref _third, value, RaiseNotifiation); }
+            get => _third;
+            set => Set(nameof(Third), ref _third, value, RaiseNotifiation); 
         }
 
         #endregion

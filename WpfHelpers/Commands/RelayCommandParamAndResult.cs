@@ -14,13 +14,8 @@ namespace NullVoidCreations.WpfHelpers.Commands
 
         public RelayCommand(Func<P, R> action, Action<R> callback, bool isEnabled = true)
         {
-            if (action == null)
-                throw new ArgumentNullException("action");
-            if (callback == null)
-                throw new ArgumentNullException("callback");
-
-            _action = action;
-            _callback = callback;
+            _action = action ?? throw new ArgumentNullException("action");
+            _callback = callback ?? throw new ArgumentNullException("callback");
             IsEnabled = isEnabled;
         }
 
@@ -28,8 +23,8 @@ namespace NullVoidCreations.WpfHelpers.Commands
 
         public bool IsCallbackSynchronous
         {
-            get { return _isCallbackSynchronous; }
-            set { Set(nameof(IsCallbackSynchronous), ref _isCallbackSynchronous, value); }
+            get => _isCallbackSynchronous;
+            set => Set(nameof(IsCallbackSynchronous), ref _isCallbackSynchronous, value);
         }
 
         #endregion

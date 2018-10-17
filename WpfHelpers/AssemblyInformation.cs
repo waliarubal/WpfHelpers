@@ -10,10 +10,7 @@ namespace NullVoidCreations.WpfHelpers
 
         public AssemblyInformation(Assembly assembly)
         {
-            if (assembly == null)
-                throw new ArgumentNullException("assembly");
-
-            _assembly = assembly;
+            _assembly = assembly ?? throw new ArgumentNullException("assembly");
         }
 
         #region properties
@@ -23,11 +20,7 @@ namespace NullVoidCreations.WpfHelpers
         /// </summary>
         public string ProductTitle
         {
-            get
-            {
-                return GetAttributeValue<AssemblyTitleAttribute>(a => a.Title,
-                       Path.GetFileNameWithoutExtension(_assembly.CodeBase));
-            }
+            get => GetAttributeValue<AssemblyTitleAttribute>(a => a.Title, Path.GetFileNameWithoutExtension(_assembly.CodeBase));
         }
 
         /// <summary>
@@ -50,7 +43,7 @@ namespace NullVoidCreations.WpfHelpers
         /// </summary>
         public string Description
         {
-            get { return GetAttributeValue<AssemblyDescriptionAttribute>(a => a.Description); }
+            get => GetAttributeValue<AssemblyDescriptionAttribute>(a => a.Description);
         }
 
 
@@ -59,7 +52,7 @@ namespace NullVoidCreations.WpfHelpers
         /// </summary>
         public string Product
         {
-            get { return GetAttributeValue<AssemblyProductAttribute>(a => a.Product); }
+            get => GetAttributeValue<AssemblyProductAttribute>(a => a.Product); 
         }
 
         /// <summary>
@@ -67,7 +60,7 @@ namespace NullVoidCreations.WpfHelpers
         /// </summary>
         public string Copyright
         {
-            get { return GetAttributeValue<AssemblyCopyrightAttribute>(a => a.Copyright); }
+            get => GetAttributeValue<AssemblyCopyrightAttribute>(a => a.Copyright);
         }
 
         /// <summary>
@@ -75,7 +68,7 @@ namespace NullVoidCreations.WpfHelpers
         /// </summary>
         public string Company
         {
-            get { return GetAttributeValue<AssemblyCompanyAttribute>(a => a.Company); }
+            get => GetAttributeValue<AssemblyCompanyAttribute>(a => a.Company);
         }
 
         public string Directory

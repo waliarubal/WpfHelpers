@@ -247,11 +247,7 @@ namespace NullVoidCreations.WpfHelpers
 
         public bool IsInternetAvailable
         {
-            get
-            {
-                int flags;
-                return InternetGetConnectedState(out flags, 0);
-            }
+            get => InternetGetConnectedState(out int flags, 0);
         }
 
         #endregion

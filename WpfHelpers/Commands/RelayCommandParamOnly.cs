@@ -12,10 +12,7 @@ namespace NullVoidCreations.WpfHelpers.Commands
 
         public RelayCommand(Action<P> action, bool isEnabled = true)
         {
-            if (action == null)
-                throw new ArgumentNullException("action");
-
-            _action = action;
+            _action = action ?? throw new ArgumentNullException("action");
             IsEnabled = isEnabled;
         }
 

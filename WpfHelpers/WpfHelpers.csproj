@@ -103,6 +103,7 @@
     <Compile Include="AssemblyInformation.cs" />
     <Compile Include="Behaviors\ColumnHeaderBehavior.cs" />
     <Compile Include="Behaviors\PasswordBoxBindingBehavior.cs" />
+    <Compile Include="Commands\MultiCommand.cs" />
     <Compile Include="Converters\EnumToStringConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Base\ViewModelBase.cs" />

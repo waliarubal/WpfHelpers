@@ -30,13 +30,14 @@ namespace NullVoidCreations.WpfHelpers.Base
             return null;
         }
 
+        #region properties
+
         protected bool IsInDesignMode
         {
-            get
-            {
-                return DesignerProperties.GetIsInDesignMode(new DependencyObject());
-            }
+            get => DesignerProperties.GetIsInDesignMode(new DependencyObject());
         }
+
+        #endregion
 
         public TResult ShowDialog<TResult>(Control view, Window owner = null)
         {

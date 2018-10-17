@@ -39,7 +39,7 @@ namespace NullVoidCreations.WpfHelpers.DataStructures
 
         public string String
         {
-            get { return ToString(); }
+            get => ToString();
         }
 
         public char Separator { get; set; }

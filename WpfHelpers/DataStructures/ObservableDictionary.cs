@@ -18,28 +18,28 @@ namespace NullVoidCreations.WpfHelpers.DataStructures
 
         public V this[K key]
         {
-            get { return _dictionary[key]; }
-            set { _dictionary[key] = value; }
+            get => _dictionary[key];
+            set => _dictionary[key] = value; 
         }
 
         public int Count
         {
-            get { return _dictionary.Count; }
+            get => _dictionary.Count; 
         }
 
         public bool IsReadOnly
         {
-            get { return false; }
+            get => false;
         }
 
         public ICollection<K> Keys
         {
-            get { return _dictionary.Keys; }
+            get => _dictionary.Keys; 
         }
 
         public ICollection<V> Values
         {
-            get { return _dictionary.Values; }
+            get => _dictionary.Values;
         }
 
         #endregion
