@@ -70,11 +70,11 @@ namespace NullVoidCreations.WpfHelpers.Commands
 
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            var commandStack = e.Argument as List<KeyValuePair<CommandBase, object>>;
+            var commandStack = e.Argument as List<Doublet<CommandBase, object>>;
             foreach(var commandEntry in commandStack)
             {
-                var command = commandEntry.Key;
-                var parameter = commandEntry.Value;
+                var command = commandEntry.First;
+                var parameter = commandEntry.Second;
                 if (command.IsSynchronous)
                     command.Execute(parameter);
                 else
