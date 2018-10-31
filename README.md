@@ -36,6 +36,6 @@ Many thanks to [JetBrains](https://www.jetbrains.com/) for providing free licens
 Following projects rely on WPF Helpers and/or the Licensing component.
 * [eBay Smart Buy - Books](https://github.com/waliarubal/EbayWorker) which is a smart wat to get competitive prices for books from eBay.
 * [SMS Buddy](https://github.com/waliarubal/SmsBuddy) which is an innovative smart way to send SMS in bulk using templates.
-* [JustDial Scraper](https://github.com/waliarubal/JustDialScrapper) which is an innovation to bulk download contact information from JustDial. 
+* JustDial Scraper which is an innovation to bulk download contact information from JustDial. 
 * [Chaturbate Player](https://github.com/waliarubal/ChaturbatePlayer) which is a redefined way to view live cam feeds from chaturbate.com without opening it in web browser. 
-* [Billiards Club Manager](https://github.com/waliarubal/BilliardsClubManager) which is a billiards club management software,
+* Billiards Club Manager which is a billiards club management software,
