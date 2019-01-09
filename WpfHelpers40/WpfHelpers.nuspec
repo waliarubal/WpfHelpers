@@ -4,7 +4,7 @@
     <!-- required -->
     <id>NullVoidCreations.WpfHelpers</id>
     <version>0.0.0.0</version>
-    <description>A set of classes and resources to get up to speed with a new WPF MVVM based project targeting .NET Framework 4.0.</description>
+    <description>A set of classes and resources to get up to speed with a new WPF MVVM based project targeting .NET Framework 4.0 and 4.5.</description>
     <authors>Rubal Walia</authors>
     <!-- optional -->
     <title>WPF Helpers</title>
@@ -12,7 +12,7 @@
     <projectUrl>https://github.com/waliarubal/WpfHelpers</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes></releaseNotes>
-    <copyright>Copyright © Rubal Walia 2017 - 2018</copyright>
+    <copyright>Copyright © Rubal Walia 2017 - 2019</copyright>
     <tags>WPF XAML MVVM</tags>
     <iconUrl>https://raw.githubusercontent.com/waliarubal/WpfHelpers/master/Images/construction-workers-64.png</iconUrl>
   </metadata>

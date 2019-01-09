@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AE473206-B1DE-4D15-B05B-AF910F2B57D4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NullVoidCreations.WpfHelpers</RootNamespace>
+    <AssemblyName>NullVoidCreations.WpfHelpers</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\WpfHelpers40\AssemblyInformation.cs">
+      <Link>AssemblyInformation.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\Base\CommandBase.cs">
+      <Link>Base\CommandBase.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\Base\NotificationBase.cs">
+      <Link>Base\NotificationBase.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\Base\ViewModelBase.cs">
+      <Link>Base\ViewModelBase.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\Behaviors\ColumnHeaderBehavior.cs">
+      <Link>Behaviors\ColumnHeaderBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\Behaviors\PasswordBoxBindingBehavior.cs">
+      <Link>Behaviors\PasswordBoxBindingBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\Commands\MultiCommand.cs">
+      <Link>Commands\MultiCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\Commands\RelayCommand.cs">
+      <Link>Commands\RelayCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\Commands\RelayCommandParamAndResult.cs">
+      <Link>Commands\RelayCommandParamAndResult.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\Commands\RelayCommandParamOnly.cs">
+      <Link>Commands\RelayCommandParamOnly.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\Converters\EnumToStringConverter.cs">
+      <Link>Converters\EnumToStringConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\Converters\InverseBooleanConverter.cs">
+      <Link>Converters\InverseBooleanConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\Converters\InverseBooleanToVisibilityConverter.cs">
+      <Link>Converters\InverseBooleanToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\Converters\MultiValueConverter.cs">
+      <Link>Converters\MultiValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\Converters\SecureStringToStringConverter.cs">
+      <Link>Converters\SecureStringToStringConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\DataStructures\Doublet.cs">
+      <Link>DataStructures\Doublet.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\DataStructures\ExtendedObservableCollection.cs">
+      <Link>DataStructures\ExtendedObservableCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\DataStructures\ObservableDictionary.cs">
+      <Link>DataStructures\ObservableDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\DataStructures\Triplet.cs">
+      <Link>DataStructures\Triplet.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\DirectoryWalker.cs">
+      <Link>DirectoryWalker.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\ExtendedWebClient.cs">
+      <Link>ExtendedWebClient.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\Extensions.cs">
+      <Link>Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\FileSystemHelper.cs">
+      <Link>FileSystemHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\PlatformInvoke.cs">
+      <Link>PlatformInvoke.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\SettingsManager.cs">
+      <Link>SettingsManager.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\StringCipher.cs">
+      <Link>StringCipher.cs</Link>
+    </Compile>
+    <Compile Include="..\WpfHelpers40\ZipStorer.cs">
+      <Link>ZipStorer.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -11,13 +11,13 @@ using System.Windows.Markup;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NullVoid Creations")]
 [assembly: AssemblyProduct("WPF Helpers")]
-[assembly: AssemblyCopyright("Copyright © Rubal Walia 2017 - 2018")]
+[assembly: AssemblyCopyright("Copyright © Rubal Walia 2017 - 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // namespace mapping
-[assembly:XmlnsPrefix("http://schemas.nullvoidcreations.com/wpfhelpers", "wh")]
-[assembly:XmlnsDefinition("http://schemas.nullvoidcreations.com/wpfhelpers", "NullVoidCreations.WpfHelpers.Behaviors")]
+[assembly: XmlnsPrefix("http://schemas.nullvoidcreations.com/wpfhelpers", "wh")]
+[assembly: XmlnsDefinition("http://schemas.nullvoidcreations.com/wpfhelpers", "NullVoidCreations.WpfHelpers.Behaviors")]
 [assembly: XmlnsDefinition("http://schemas.nullvoidcreations.com/wpfhelpers", "NullVoidCreations.WpfHelpers.Converters")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

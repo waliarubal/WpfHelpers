@@ -72,9 +72,9 @@
     <Content Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WpfHelpers\WpfHelpers.csproj">
+    <ProjectReference Include="..\WpfHelpers40\WpfHelpers40.csproj">
       <Project>{91a492c0-dec6-4ac7-839f-c127441333a7}</Project>
-      <Name>WpfHelpers</Name>
+      <Name>WpfHelpers40</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
