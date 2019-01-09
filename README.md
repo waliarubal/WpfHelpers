@@ -2,7 +2,7 @@
 
 # WPF Helpers [![NuGet](https://img.shields.io/nuget/v/NullVoidCreations.WpfHelpers.svg)](https://www.nuget.org/packages/NullVoidCreations.WpfHelpers/) [![NuGet](https://img.shields.io/nuget/dt/NullVoidCreations.WpfHelpers.svg)](https://www.nuget.org/packages/NullVoidCreations.WpfHelpers/)
 
-WPF helpers is set of classes and resources wrapped up in an assembly to get up to speed with a new WPF MVVM based project targeting .NET Framework 4.0. As this targets framework 4.0, should work with .NET 4+ as well (haven't tested it though). As of now this assembly provides below mentioned features.
+WPF helpers is set of classes and resources wrapped up in an assembly to get up to speed with a new WPF MVVM based project targeting .NET Framework 4.0 or 4.5. As this targets framework 4.0 and 4.5, should work with .NET 4+ as well. As of now this assembly provides below mentioned features.
 
 * **CommandBase** is an abstract class which provides boilerplate implemention for commanding.
 * **NotificationBase** is an abstract class which provides boilderplate implementation for raising notifications.
@@ -36,6 +36,6 @@ Many thanks to [JetBrains](https://www.jetbrains.com/) for providing free licens
 Following projects rely on WPF Helpers and/or the Licensing component.
 * [eBay Smart Buy - Books](https://github.com/waliarubal/EbayWorker) which is a smart wat to get competitive prices for books from eBay.
 * [SMS Buddy](https://github.com/waliarubal/SmsBuddy) which is an innovative smart way to send SMS in bulk using templates.
-* JustDial Scraper which is an innovation to bulk download contact information from JustDial. 
+* [JustDial Scraper](https://github.com/waliarubal/JustDialScrapper) which is an innovation to bulk download contact information from JustDial. 
 * [Chaturbate Player](https://github.com/waliarubal/ChaturbatePlayer) which is a redefined way to view live cam feeds from chaturbate.com without opening it in web browser. 
-* Billiards Club Manager which is a billiards club management software,
+* [Billiards Club Manager](https://github.com/waliarubal/BilliardsClubManager) which is a billiards club management software,
