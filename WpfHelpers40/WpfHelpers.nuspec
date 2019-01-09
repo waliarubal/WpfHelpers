@@ -16,4 +16,7 @@
     <tags>WPF XAML MVVM</tags>
     <iconUrl>https://raw.githubusercontent.com/waliarubal/WpfHelpers/master/Images/construction-workers-64.png</iconUrl>
   </metadata>
+  <files>
+    <file src="lib\**" target="lib/{framework name}[{version}]" />
+  </files>
 </package>

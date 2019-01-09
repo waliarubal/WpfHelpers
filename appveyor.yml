@@ -24,6 +24,8 @@ before_build:
     echo Build Directory: %APPVEYOR_BUILD_FOLDER%
 
     nuget restore
+
+    nuget update
 build:
   publish_nuget: true
   include_nuget_references: true
@@ -32,9 +34,9 @@ before_package:
 - cmd: >-
     echo Inject build version %BUILD_VERSION% in nuget manifest...
 
-    powershell -Command "(get-content -Path %APPVEYOR_BUILD_FOLDER%\WpfHelpers\WpfHelpers.nuspec) | foreach-object {$_ -replace '0.0.0.0', '%BUILD_VERSION%'} | set-content %APPVEYOR_BUILD_FOLDER%\WpfHelpers\WpfHelpers.nuspec"
+    powershell -Command "(get-content -Path %APPVEYOR_BUILD_FOLDER%\WpfHelpers40\WpfHelpers.nuspec) | foreach-object {$_ -replace '0.0.0.0', '%BUILD_VERSION%'} | set-content %APPVEYOR_BUILD_FOLDER%\WpfHelpers40\WpfHelpers.nuspec"
 
-    type %APPVEYOR_BUILD_FOLDER%\WpfHelpers\WpfHelpers.nuspec
+    type %APPVEYOR_BUILD_FOLDER%\WpfHelpers40\WpfHelpers.nuspec
 
     powershell -Command "(get-content -Path %APPVEYOR_BUILD_FOLDER%\Licensing\Licensing.nuspec) | foreach-object {$_ -replace '0.0.0.0', '%BUILD_VERSION%'} | set-content %APPVEYOR_BUILD_FOLDER%\Licensing\Licensing.nuspec"
 
