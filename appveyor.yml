@@ -24,8 +24,6 @@ before_build:
     echo Build Directory: %APPVEYOR_BUILD_FOLDER%
 
     nuget restore
-
-    nuget update
 build:
   publish_nuget: true
   include_nuget_references: true
