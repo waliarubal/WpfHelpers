@@ -32,7 +32,7 @@ before_package:
 - cmd: >-
     echo Inject build version %BUILD_VERSION% in nuget manifest...
 
-    powershell -Command "(get-content -Path %APPVEYOR_BUILD_FOLDER%\WpfHelpers40\WpfHelpers.nuspec) | foreach-object {$_ -replace '0.0.0.0', '%BUILD_VERSION%'} | set-content %APPVEYOR_BUILD_FOLDER%\WpfHelpers40\WpfHelpers.nuspec"
+    powershell -Command "(get-content -Path %APPVEYOR_BUILD_FOLDER%\WpfHelpers40\WpfHelpers40.nuspec) | foreach-object {$_ -replace '0.0.0.0', '%BUILD_VERSION%'} | set-content %APPVEYOR_BUILD_FOLDER%\WpfHelpers40\WpfHelpers40.nuspec"
 
     type %APPVEYOR_BUILD_FOLDER%\WpfHelpers40\WpfHelpers.nuspec
 
