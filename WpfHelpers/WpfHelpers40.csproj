@@ -48,7 +48,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\lib\net40\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -65,7 +65,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>WpfHelpers40.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>WpfHelpers.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
@@ -136,10 +136,10 @@
     </Compile>
     <AppDesigner Include="Properties\" />
     <None Include="packages.config" />
-    <None Include="WpfHelpers40.nuspec">
+    <None Include="WpfHelpers.nuspec">
       <SubType>Designer</SubType>
     </None>
-    <None Include="WpfHelpers40.snk" />
+    <None Include="WpfHelpers.snk" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
