@@ -17,6 +17,6 @@
     <iconUrl>https://raw.githubusercontent.com/waliarubal/WpfHelpers/master/Images/construction-workers-64.png</iconUrl>
   </metadata>
   <files>
-    <file src="lib\**" target="lib/{framework name}[{version}]" />
+    <file src="bin\Release\lib\**" target="lib/{framework name}[{version}]" />
   </files>
 </package>
