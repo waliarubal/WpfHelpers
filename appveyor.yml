@@ -32,9 +32,9 @@ before_package:
 - cmd: >-
     echo Inject build version %BUILD_VERSION% in nuget manifest...
 
-    powershell -Command "(get-content -Path %APPVEYOR_BUILD_FOLDER%\WpfHelpers40\WpfHelpers40.nuspec) | foreach-object {$_ -replace '0.0.0.0', '%BUILD_VERSION%'} | set-content %APPVEYOR_BUILD_FOLDER%\WpfHelpers40\WpfHelpers40.nuspec"
+    powershell -Command "(get-content -Path %APPVEYOR_BUILD_FOLDER%\WpfHelpers40\WpfHelpers.nuspec) | foreach-object {$_ -replace '0.0.0.0', '%BUILD_VERSION%'} | set-content %APPVEYOR_BUILD_FOLDER%\WpfHelpers40\WpfHelpers.nuspec"
 
-    type %APPVEYOR_BUILD_FOLDER%\WpfHelpers40\WpfHelpers40.nuspec
+    type %APPVEYOR_BUILD_FOLDER%\WpfHelpers40\WpfHelpers.nuspec
 
     powershell -Command "(get-content -Path %APPVEYOR_BUILD_FOLDER%\Licensing\Licensing.nuspec) | foreach-object {$_ -replace '0.0.0.0', '%BUILD_VERSION%'} | set-content %APPVEYOR_BUILD_FOLDER%\Licensing\Licensing.nuspec"
 
@@ -42,7 +42,7 @@ before_package:
 deploy:
 - provider: NuGet
   api_key:
-    secure: FprWChvPzyBTf15roCDBXtHgL/XkekHWTWHohvO1JZjwD948yYGstm8LnFeb0W6I
+    secure: CPNzogbEsDOFMQMS/Fws3SRQy/ig92V8Lk0dVBXre1z08ohXwq/MyvmI8WzHsf88
   skip_symbols: true
   artifact: /.*\.nupkg/
   on:
