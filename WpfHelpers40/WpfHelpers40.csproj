@@ -136,7 +136,7 @@
     </Compile>
     <AppDesigner Include="Properties\" />
     <None Include="packages.config" />
-    <None Include="WpfHelpers.nuspec">
+    <None Include="WpfHelpers40.nuspec">
       <SubType>Designer</SubType>
     </None>
     <None Include="WpfHelpers40.snk" />
