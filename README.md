@@ -1,3 +1,5 @@
+**I am no longer using WPF as I have adopted [Avalonia UI](https://avaloniaui.net/) which is a cross platform alternate of WPF. This repository is no longer maintained.**
+
 [![Build status](https://ci.appveyor.com/api/projects/status/kiopt9twsc3vyfov?svg=true)](https://ci.appveyor.com/project/waliarubal/wpfhelpers) ![GitHub](https://img.shields.io/github/license/waliarubal/WpfHelpers.svg)
 
 # WPF Helpers [![NuGet](https://img.shields.io/nuget/v/NullVoidCreations.WpfHelpers.svg)](https://www.nuget.org/packages/NullVoidCreations.WpfHelpers/) [![NuGet](https://img.shields.io/nuget/dt/NullVoidCreations.WpfHelpers.svg)](https://www.nuget.org/packages/NullVoidCreations.WpfHelpers/)
